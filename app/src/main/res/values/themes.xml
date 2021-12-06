@@ -16,8 +16,5 @@
         <item name="fontFamily">@font/ncc1701a</item>
         <item name="backgroundTint">@color/grey_white</item>
         <item name="android:background">@color/white</item>
-        <item name="android:foreground">?attr/selectableItemBackground</item>
-        <item name="rippleColor">@color/white</item>
-        <item name="colorControlHighlight">@color/black</item>
     </style>
 </resources>
