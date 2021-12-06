@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="phoenix_ro_026">Phoenix RO-026</string>
+    <string name="button_new">New</string>
+    <string name="button_list">List</string>
 </resources>
