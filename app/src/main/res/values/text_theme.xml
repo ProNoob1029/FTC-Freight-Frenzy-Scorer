@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="text_theme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="backgroundTint">@color/zero</item>
+    </style>
+</resources>
