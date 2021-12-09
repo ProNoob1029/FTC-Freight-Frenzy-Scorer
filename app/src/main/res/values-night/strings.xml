@@ -5,4 +5,15 @@
     <string name="phoenix_logo">phoenix logo</string>
     <string name="button_new">New</string>
     <string name="button_list">List</string>
+    <string name="score_match">Score Match</string>
+    <string name="team_name">Team Name</string>
+    <string name="team_code">Team code</string>
+    <string name="duck_delivery">Duck Delivery</string>
+    <string name="alliance_team_name">Alliance Team Name</string>
+    <string name="alliance_team_code">Alliance Team Code</string>
+    <string name="autonomous_points">Autonomous Points</string>
+    <string name="freight_in_storage">Freight in Storage</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="zero">0</string>
 </resources>
