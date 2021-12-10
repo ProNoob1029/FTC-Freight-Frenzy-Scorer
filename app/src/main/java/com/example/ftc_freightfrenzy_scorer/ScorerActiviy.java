@@ -3,12 +3,14 @@ package com.example.ftc_freightfrenzy_scorer;
 import static java.lang.String.format;
 
 import android.annotation.SuppressLint;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
@@ -16,6 +18,8 @@ public class ScorerActiviy extends AppCompatActivity{
 
     public int autoStorage = 0;
     public int autoHub = 0;
+    SwitchCompat switchParkedFullyRef;
+    public boolean switchParkedFullyHidden = true;
 
     @SuppressLint("DefaultLocale")
     @Override
@@ -26,6 +30,7 @@ public class ScorerActiviy extends AppCompatActivity{
         Vibrator myVib = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
         SwitchCompat switchParked = findViewById(R.id.switch_parked);
         SwitchCompat switchParkedFully = findViewById(R.id.switch_parked_fully);
+        switchParkedFullyRef = switchParkedFully;
         TextView textAutoStorage = findViewById(R.id.text_auto_storage);
         TextView textAutoHub = findViewById(R.id.text_auto_hub);
         Button buttonAutoStoragePlus = findViewById(R.id.button_auto_storage_plus);
@@ -36,9 +41,13 @@ public class ScorerActiviy extends AppCompatActivity{
         switchParked.setOnClickListener(v -> {
             if(!switchParked.isChecked()){
                 switchParkedFully.setVisibility(View.GONE);
+                switchParkedFullyHidden = true;
                 switchParkedFully.setChecked(false);
             }
-            else switchParkedFully.setVisibility((View.VISIBLE));
+            else {
+                switchParkedFully.setVisibility((View.VISIBLE));
+                switchParkedFullyHidden = false;
+            }
         });
 
         buttonAutoStoragePlus.setOnClickListener(v -> {
@@ -70,5 +79,21 @@ public class ScorerActiviy extends AppCompatActivity{
                 textAutoHub.setText(format("%d", autoHub));
             }
         });
+    }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        // Checks the orientation of the screen
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            if(switchParkedFullyHidden)
+                switchParkedFullyRef.setVisibility(View.GONE);
+            else switchParkedFullyRef.setVisibility(View.VISIBLE);
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            if(switchParkedFullyHidden)
+                switchParkedFullyRef.setVisibility(View.GONE);
+            else switchParkedFullyRef.setVisibility(View.VISIBLE);
+        }
     }
 }

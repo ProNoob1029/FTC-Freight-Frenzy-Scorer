@@ -16,5 +16,6 @@
         <item name="backgroundTint">@color/zero</item>
         <item name="android:background">@color/white</item>
         <item name="android:textColorHint">@color/grey_black</item>
+        <item name="colorAccent">@color/orange</item>
     </style>
 </resources>
