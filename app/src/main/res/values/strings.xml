@@ -16,4 +16,8 @@
     <string name="plus">+</string>
     <string name="minus">-</string>
     <string name="zero">0</string>
+    <string name="freight_in_hub">Freight in Hub</string>
+    <string name="parked">Parked</string>
+    <string name="fully_parked">Fully Parked</string>
+    <string name="driver_controlled_points">Driver Controlled Points</string>
 </resources>

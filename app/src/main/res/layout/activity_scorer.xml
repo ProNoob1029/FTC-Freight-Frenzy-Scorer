@@ -6,35 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".ScorerActiviy">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/score_match"
-        android:textAlignment="center"
-        android:textAppearance="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
-        android:textSize="60sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TextContrastCheck" />
-
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView2"
+                style="@style/text_theme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/score_match"
+                android:textAlignment="center"
+                android:textAppearance="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
+                android:textSize="48sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -82,6 +81,7 @@
 
             <TextView
                 android:id="@+id/textView3"
+                style="@style/text_theme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
@@ -99,11 +99,11 @@
                 android:layout_height="wrap_content">
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button_new2"
-                    style="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
+                    android:id="@+id/button_auto_storage_plus"
+                    style="@style/text_theme"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="8dp"
                     android:background="@drawable/button_shape"
                     android:backgroundTintMode="add"
                     android:clickable="true"
@@ -113,12 +113,31 @@
                     android:text="@string/plus"
                     android:textSize="24sp"
                     app:layout_constraintDimensionRatio="1:1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/switch_duck" />
+                    app:layout_constraintEnd_toEndOf="@+id/switch_duck"
+                    app:layout_constraintTop_toBottomOf="@+id/switch_duck"
+                    tools:ignore="DuplicateSpeakableTextCheck" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button_new3"
-                    style="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
+                    android:id="@+id/button_auto_hub_plus"
+                    style="@style/text_theme"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/button_shape"
+                    android:backgroundTintMode="add"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="sans-serif-medium"
+                    android:hapticFeedbackEnabled="true"
+                    android:text="@string/plus"
+                    android:textSize="24sp"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="@+id/switch_duck"
+                    app:layout_constraintTop_toBottomOf="@+id/button_auto_storage_plus" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_auto_storage_minus"
+                    style="@style/text_theme"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginEnd="16dp"
@@ -131,14 +150,34 @@
                     android:text="@string/minus"
                     android:textSize="24sp"
                     app:layout_constraintDimensionRatio="1:1"
-                    app:layout_constraintEnd_toStartOf="@+id/button_new2"
-                    app:layout_constraintTop_toBottomOf="@+id/switch_duck" />
+                    app:layout_constraintEnd_toStartOf="@+id/button_auto_storage_plus"
+                    app:layout_constraintTop_toTopOf="@+id/button_auto_storage_plus"
+                    tools:ignore="DuplicateSpeakableTextCheck" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_auto_hub_minus"
+                    style="@style/text_theme"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/button_shape"
+                    android:backgroundTintMode="add"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="sans-serif-medium"
+                    android:hapticFeedbackEnabled="true"
+                    android:text="@string/minus"
+                    android:textSize="24sp"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toStartOf="@+id/button_auto_storage_plus"
+                    app:layout_constraintTop_toTopOf="@+id/button_auto_hub_plus" />
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/switch_duck"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:fontFamily="sans-serif-medium"
                     android:text="@string/duck_delivery"
@@ -149,9 +188,44 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch_parked"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/parked"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="false"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/button_auto_hub_minus" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch_parked_fully"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/fully_parked"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="false"
+                    android:textSize="24sp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/switch_parked" />
+
                 <TextView
                     android:id="@+id/textView5"
-                    style="@style/text_theme"
+                    style="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -160,28 +234,75 @@
                     android:textAlignment="center"
                     android:textAppearance="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
                     android:textSize="24sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_auto_storage"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/switch_duck"
+                    app:layout_constraintTop_toTopOf="@+id/text_auto_storage"
                     tools:ignore="TextContrastCheck" />
 
                 <TextView
-                    android:id="@+id/textView6"
-                    style="@style/text_theme"
+                    android:id="@+id/textView8"
+                    style="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/freight_in_hub"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_auto_hub"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/text_auto_hub"
+                    tools:ignore="TextContrastCheck" />
+
+                <TextView
+                    android:id="@+id/text_auto_storage"
+                    style="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-medium"
                     android:text="@string/zero"
                     android:textAlignment="center"
                     android:textAppearance="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
                     android:textSize="24sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/button_new3"
+                    app:layout_constraintBottom_toBottomOf="@+id/button_auto_storage_minus"
+                    app:layout_constraintEnd_toStartOf="@+id/button_auto_storage_minus"
                     app:layout_constraintStart_toEndOf="@+id/textView5"
-                    app:layout_constraintTop_toBottomOf="@+id/switch_duck"
+                    app:layout_constraintTop_toTopOf="@+id/button_auto_storage_minus"
+                    tools:ignore="TextContrastCheck" />
+
+                <TextView
+                    android:id="@+id/text_auto_hub"
+                    style="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/zero"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/button_auto_hub_minus"
+                    app:layout_constraintEnd_toEndOf="@+id/text_auto_storage"
+                    app:layout_constraintStart_toStartOf="@+id/text_auto_storage"
+                    app:layout_constraintTop_toTopOf="@+id/button_auto_hub_minus"
                     tools:ignore="TextContrastCheck" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textView9"
+                style="@style/text_theme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/driver_controlled_points"
+                android:textAlignment="center"
+                android:textAppearance="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
+                android:textSize="34sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck" />
 
         </LinearLayout>
     </ScrollView>
