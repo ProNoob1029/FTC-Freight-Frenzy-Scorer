@@ -98,6 +98,48 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/freight_bonus"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/button_auto_hub_minus">
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switch_team_element_used"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="@string/team_element_used"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="false"
+                        android:textSize="24sp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/switch_freight_bonus" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switch_freight_bonus"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="@string/freight_bonus"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="false"
+                        android:textSize="24sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_auto_storage_plus"
                     style="@style/text_theme"
@@ -113,8 +155,8 @@
                     android:text="@string/plus"
                     android:textSize="24sp"
                     app:layout_constraintDimensionRatio="1:1"
-                    app:layout_constraintEnd_toEndOf="@+id/switch_duck"
-                    app:layout_constraintTop_toBottomOf="@+id/switch_duck"
+                    app:layout_constraintEnd_toEndOf="@+id/switch_duck_delivery"
+                    app:layout_constraintTop_toBottomOf="@+id/switch_duck_delivery"
                     tools:ignore="DuplicateSpeakableTextCheck" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -132,7 +174,7 @@
                     android:text="@string/plus"
                     android:textSize="24sp"
                     app:layout_constraintDimensionRatio="1:1"
-                    app:layout_constraintEnd_toEndOf="@+id/switch_duck"
+                    app:layout_constraintEnd_toEndOf="@+id/switch_duck_delivery"
                     app:layout_constraintTop_toBottomOf="@+id/button_auto_storage_plus" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -173,7 +215,7 @@
                     app:layout_constraintTop_toTopOf="@+id/button_auto_hub_plus" />
 
                 <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/switch_duck"
+                    android:id="@+id/switch_duck_delivery"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="16dp"
@@ -189,20 +231,36 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/switch_parked"
+                    android:id="@+id/switch_parked_in_storage"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:fontFamily="sans-serif-medium"
-                    android:text="@string/parked"
+                    android:text="@string/parked_in_storage"
                     android:textAlignment="viewStart"
                     android:textAllCaps="false"
                     android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/button_auto_hub_minus" />
+                    app:layout_constraintTop_toBottomOf="@id/freight_bonus" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch_parked_in_warehouse"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/parked_in_warehouse"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="false"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/switch_parked_in_storage" />
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/switch_parked_fully"
@@ -221,7 +279,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/switch_parked" />
+                    app:layout_constraintTop_toBottomOf="@+id/switch_parked_in_warehouse" />
 
                 <TextView
                     android:id="@+id/textView5"
@@ -231,10 +289,11 @@
                     android:layout_marginStart="16dp"
                     android:fontFamily="sans-serif-medium"
                     android:text="@string/freight_in_storage"
-                    android:textAlignment="center"
+                    android:textAlignment="viewStart"
                     android:textAppearance="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="@+id/text_auto_storage"
+                    app:layout_constraintEnd_toStartOf="@+id/text_auto_storage"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/text_auto_storage"
                     tools:ignore="TextContrastCheck" />
@@ -245,12 +304,14 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
+                    android:layout_marginEnd="24dp"
                     android:fontFamily="sans-serif-medium"
                     android:text="@string/freight_in_hub"
-                    android:textAlignment="center"
+                    android:textAlignment="viewStart"
                     android:textAppearance="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="@+id/text_auto_hub"
+                    app:layout_constraintEnd_toStartOf="@+id/text_auto_hub"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/text_auto_hub"
                     tools:ignore="TextContrastCheck" />
@@ -260,6 +321,8 @@
                     style="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
                     android:fontFamily="sans-serif-medium"
                     android:text="@string/zero"
                     android:textAlignment="center"
