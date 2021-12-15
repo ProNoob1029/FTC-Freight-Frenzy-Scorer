@@ -1,12 +1,11 @@
 package com.example.ftc_freightfrenzy_scorer;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         buttonNew.setOnClickListener(v -> {
             myVib.vibrate(20);
-            startActivity(new Intent(MainActivity.this, ScorerActiviy.class));
+            startActivity(new Intent(MainActivity.this, ScorerActivity.class));
         });
 
         buttonList.setOnClickListener(v -> myVib.vibrate(20));

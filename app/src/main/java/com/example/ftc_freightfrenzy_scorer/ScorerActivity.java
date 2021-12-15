@@ -14,36 +14,42 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
-public class ScorerActiviy extends AppCompatActivity{
+import com.example.ftc_freightfrenzy_scorer.databinding.ActivityScorerBinding;
+
+public class ScorerActivity extends AppCompatActivity{
 
     SwitchCompat switchParkedFullyRef;
     SwitchCompat switchTeamElementsUsedRef;
+
+    ///Autonomous
+    public boolean duckDelivery = false;
     public int autoStorage = 0;
     public int autoHub = 0;
+    public boolean freightBonus = false;
+    public boolean teamElementUsed = false;
     public boolean parkedInStorage = false;
     public boolean parkedInWarehouse = false;
     public boolean parkedFully = false;
-    public boolean duckDelivery = false;
-    public boolean freightBonus = false;
-    public boolean teamElementUsed = false;
 
     @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scorer);
+        com.example.ftc_freightfrenzy_scorer.databinding.ActivityScorerBinding binding = ActivityScorerBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
 
         Vibrator myVib = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
         SwitchCompat switchDuckDelivery = findViewById(R.id.switch_duck_delivery);
         SwitchCompat switchFreightBonus = findViewById(R.id.switch_freight_bonus);
         SwitchCompat switchTeamElementUsed = findViewById(R.id.switch_team_element_used);
         switchTeamElementsUsedRef = switchTeamElementUsed;
-        SwitchCompat switchParkedInStorage = findViewById(R.id.switch_parked_in_storage);
-        SwitchCompat switchParkedInWarehouse = findViewById(R.id.switch_parked_in_warehouse);
-        SwitchCompat switchParkedFully = findViewById(R.id.switch_parked_fully);
+        SwitchCompat switchParkedInStorage = findViewById(R.id.switch_auto_parked_in_storage);
+        SwitchCompat switchParkedInWarehouse = findViewById(R.id.switch_auto_parked_in_warehouse);
+        SwitchCompat switchParkedFully = findViewById(R.id.switch_auto_parked_fully);
         switchParkedFullyRef = switchParkedFully;
-        TextView textAutoStorage = findViewById(R.id.text_auto_storage);
-        TextView textAutoHub = findViewById(R.id.text_auto_hub);
+        TextView textAutoStorage = findViewById(R.id.text_auto_storage_nr);
+        TextView textAutoHub = findViewById(R.id.text_auto_hub_nr);
         Button buttonAutoStoragePlus = findViewById(R.id.button_auto_storage_plus);
         Button buttonAutoStorageMinus = findViewById(R.id.button_auto_storage_minus);
         Button buttonAutoHubPlus = findViewById(R.id.button_auto_hub_plus);

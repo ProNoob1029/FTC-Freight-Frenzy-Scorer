@@ -23,4 +23,8 @@
     <string name="parked_in_warehouse">Parked in Warehouse</string>
     <string name="freight_bonus">Freight Bonus</string>
     <string name="team_element_used">Team Element Used</string>
+    <string name="freight_in_hub_l1">Freight in Hub L1</string>
+    <string name="freight_in_hub_l2">Freight in Hub L2</string>
+    <string name="freight_in_hub_l3">Freight in Hub L3</string>
+    <string name="freight_in_shared">Freight in Shared</string>
 </resources>
