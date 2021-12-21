@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ScorerActiviy"
+            android:name=".ScorerActivity"
             android:configChanges="orientation|screenSize">
         </activity>
     </application>

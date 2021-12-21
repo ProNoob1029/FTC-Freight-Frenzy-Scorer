@@ -1,25 +1,13 @@
 package com.example.ftc_freightfrenzy_scorer;
 
-import static java.lang.String.format;
-
-import android.annotation.SuppressLint;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SwitchCompat;
-
 import com.example.ftc_freightfrenzy_scorer.databinding.ActivityScorerBinding;
+import java.util.Locale;
 
 public class ScorerActivity extends AppCompatActivity{
-
-    SwitchCompat switchParkedFullyRef;
-    SwitchCompat switchTeamElementsUsedRef;
 
     ///Autonomous
     public boolean duckDelivery = false;
@@ -31,7 +19,6 @@ public class ScorerActivity extends AppCompatActivity{
     public boolean parkedInWarehouse = false;
     public boolean parkedFully = false;
 
-    @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +27,8 @@ public class ScorerActivity extends AppCompatActivity{
         setContentView(view);
 
         Vibrator myVib = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
-        SwitchCompat switchDuckDelivery = findViewById(R.id.switch_duck_delivery);
+
+        /*SwitchCompat switchDuckDelivery = findViewById(R.id.switch_duck_delivery);
         SwitchCompat switchFreightBonus = findViewById(R.id.switch_freight_bonus);
         SwitchCompat switchTeamElementUsed = findViewById(R.id.switch_team_element_used);
         switchTeamElementsUsedRef = switchTeamElementUsed;
@@ -53,85 +41,85 @@ public class ScorerActivity extends AppCompatActivity{
         Button buttonAutoStoragePlus = findViewById(R.id.button_auto_storage_plus);
         Button buttonAutoStorageMinus = findViewById(R.id.button_auto_storage_minus);
         Button buttonAutoHubPlus = findViewById(R.id.button_auto_hub_plus);
-        Button buttonAutoHubMinus = findViewById(R.id.button_auto_hub_minus);
+        Button buttonAutoHubMinus = findViewById(R.id.button_auto_hub_minus);*/
 
-        switchParkedInStorage.setOnClickListener(v -> {
-            if(!switchParkedInStorage.isChecked()){
-                switchParkedFully.setVisibility(View.GONE);
-                switchParkedFully.setChecked(false);
+        binding.switchAutoParkedInStorage.setOnClickListener(v -> {
+            if(!binding.switchAutoParkedInStorage.isChecked()){
+                binding.switchAutoParkedFully.setVisibility(View.GONE);
+                binding.switchAutoParkedFully.setChecked(false);
                 parkedInStorage = false;
             }
             else {
-                switchParkedFully.setVisibility((View.VISIBLE));
+                binding.switchAutoParkedFully.setVisibility((View.VISIBLE));
                 parkedInStorage = true;
                 parkedInWarehouse = false;
-                switchParkedInWarehouse.setChecked(false);
+                binding.switchAutoParkedInWarehouse.setChecked(false);
             }
         });
 
-        switchParkedInWarehouse.setOnClickListener(v -> {
-            if(!switchParkedInWarehouse.isChecked()){
-                switchParkedFully.setVisibility(View.GONE);
-                switchParkedFully.setChecked(false);
+        binding.switchAutoParkedInWarehouse.setOnClickListener(v -> {
+            if(!binding.switchAutoParkedInWarehouse.isChecked()){
+                binding.switchAutoParkedFully.setVisibility(View.GONE);
+                binding.switchAutoParkedFully.setChecked(false);
                 parkedInWarehouse = false;
             }
             else {
-                switchParkedFully.setVisibility((View.VISIBLE));
+                binding.switchAutoParkedFully.setVisibility((View.VISIBLE));
                 parkedInWarehouse = true;
                 parkedInStorage = false;
-                switchParkedInStorage.setChecked(false);
+                binding.switchAutoParkedInStorage.setChecked(false);
             }
         });
 
-        switchFreightBonus.setOnClickListener(v -> {
-            if(!switchFreightBonus.isChecked()){
-                switchTeamElementUsed.setVisibility(View.GONE);
-                switchTeamElementUsed.setChecked(false);
+        binding.switchFreightBonus.setOnClickListener(v -> {
+            if(!binding.switchFreightBonus.isChecked()){
+                binding.switchTeamElementUsed.setVisibility(View.GONE);
+                binding.switchTeamElementUsed.setChecked(false);
                 freightBonus = false;
                 teamElementUsed = false;
             }
             else {
-                switchTeamElementUsed.setVisibility((View.VISIBLE));
+                binding.switchTeamElementUsed.setVisibility((View.VISIBLE));
                 freightBonus = true;
             }
         });
 
-        switchTeamElementUsed.setOnClickListener(v -> teamElementUsed = switchTeamElementUsed.isChecked());
+        binding.switchTeamElementUsed.setOnClickListener(v -> teamElementUsed = binding.switchTeamElementUsed.isChecked());
 
-        switchDuckDelivery.setOnClickListener(v -> duckDelivery = switchDuckDelivery.isChecked());
+        binding.switchDuckDelivery.setOnClickListener(v -> duckDelivery = binding.switchDuckDelivery.isChecked());
 
-        switchParkedFully.setOnClickListener(v -> parkedFully = switchParkedFully.isChecked());
+        binding.switchAutoParkedFully.setOnClickListener(v -> parkedFully = binding.switchAutoParkedFully.isChecked());
 
-        buttonAutoStoragePlus.setOnClickListener(v -> {
+        binding.buttonAutoStoragePlus.setOnClickListener(v -> {
             autoStorage++;
             myVib.vibrate(20);
-            textAutoStorage.setText(format("%d", autoStorage));
+            binding.textAutoStorageNr.setText(String.format(Locale.US,"%d", autoStorage));
         });
 
-        buttonAutoStorageMinus.setOnClickListener(v -> {
+        binding.buttonAutoStorageMinus.setOnClickListener(v -> {
             if(autoStorage > 0){
                 autoStorage--;
                 myVib.vibrate(20);
-                textAutoStorage.setText(format("%d", autoStorage));
+                binding.textAutoStorageNr.setText(String.format(Locale.US,"%d", autoStorage));
             }
         });
 
-        buttonAutoHubPlus.setOnClickListener(v -> {
+        binding.buttonAutoHubPlus.setOnClickListener(v -> {
             autoHub++;
             myVib.vibrate(20);
-            textAutoHub.setText(format("%d", autoHub));
+            binding.textAutoHubNr.setText(String.format(Locale.US,"%d", autoHub));
         });
 
-        buttonAutoHubMinus.setOnClickListener(v -> {
+        binding.buttonAutoHubMinus.setOnClickListener(v -> {
             if(autoHub > 0){
                 autoHub--;
                 myVib.vibrate(20);
-                textAutoHub.setText(format("%d", autoHub));
+                binding.textAutoHubNr.setText(String.format(Locale.US,"%d", autoHub));
             }
         });
     }
 
-    @Override
+    /*@Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
 
@@ -151,5 +139,5 @@ public class ScorerActivity extends AppCompatActivity{
                 switchTeamElementsUsedRef.setVisibility(View.GONE);
             else switchTeamElementsUsedRef.setVisibility(View.VISIBLE);
         }
-    }
+    }*/
 }
