@@ -10,6 +10,8 @@ import java.util.Locale;
 public class ScorerActivity extends AppCompatActivity{
 
     ///Autonomous
+    public String autoString;
+    public int autoTotalPoints = 0;
     public boolean duckDelivery = false;
     public int autoStorage = 0;
     public int autoHub = 0;
@@ -27,6 +29,8 @@ public class ScorerActivity extends AppCompatActivity{
         setContentView(view);
 
         Vibrator myVib = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
+        autoString = (String) binding.textAutoPoints.getText();
+        binding.textAutoPoints.setText(String.format(Locale.US,"%s - %d", autoString, autoTotalPoints));
 
         /*SwitchCompat switchDuckDelivery = findViewById(R.id.switch_duck_delivery);
         SwitchCompat switchFreightBonus = findViewById(R.id.switch_freight_bonus);
@@ -48,6 +52,7 @@ public class ScorerActivity extends AppCompatActivity{
                 binding.switchAutoParkedFully.setVisibility(View.GONE);
                 binding.switchAutoParkedFully.setChecked(false);
                 parkedInStorage = false;
+
             }
             else {
                 binding.switchAutoParkedFully.setVisibility((View.VISIBLE));
@@ -55,6 +60,8 @@ public class ScorerActivity extends AppCompatActivity{
                 parkedInWarehouse = false;
                 binding.switchAutoParkedInWarehouse.setChecked(false);
             }
+            CalculateAutoPoints();
+            binding.textAutoPoints.setText(String.format(Locale.US,"%s - %d", autoString, autoTotalPoints));
         });
 
         binding.switchAutoParkedInWarehouse.setOnClickListener(v -> {
@@ -69,6 +76,8 @@ public class ScorerActivity extends AppCompatActivity{
                 parkedInStorage = false;
                 binding.switchAutoParkedInStorage.setChecked(false);
             }
+            CalculateAutoPoints();
+            binding.textAutoPoints.setText(String.format(Locale.US,"%s - %d", autoString, autoTotalPoints));
         });
 
         binding.switchFreightBonus.setOnClickListener(v -> {
@@ -82,18 +91,34 @@ public class ScorerActivity extends AppCompatActivity{
                 binding.switchTeamElementUsed.setVisibility((View.VISIBLE));
                 freightBonus = true;
             }
+            CalculateAutoPoints();
+            binding.textAutoPoints.setText(String.format(Locale.US,"%s - %d", autoString, autoTotalPoints));
         });
 
-        binding.switchTeamElementUsed.setOnClickListener(v -> teamElementUsed = binding.switchTeamElementUsed.isChecked());
+        binding.switchTeamElementUsed.setOnClickListener(v -> {
+            teamElementUsed = binding.switchTeamElementUsed.isChecked();
+            CalculateAutoPoints();
+            binding.textAutoPoints.setText(String.format(Locale.US,"%s - %d", autoString, autoTotalPoints));
+        });
 
-        binding.switchDuckDelivery.setOnClickListener(v -> duckDelivery = binding.switchDuckDelivery.isChecked());
+        binding.switchDuckDelivery.setOnClickListener(v -> {
+            duckDelivery = binding.switchDuckDelivery.isChecked();
+            CalculateAutoPoints();
+            binding.textAutoPoints.setText(String.format(Locale.US,"%s - %d", autoString, autoTotalPoints));
+        });
 
-        binding.switchAutoParkedFully.setOnClickListener(v -> parkedFully = binding.switchAutoParkedFully.isChecked());
+        binding.switchAutoParkedFully.setOnClickListener(v -> {
+            parkedFully = binding.switchAutoParkedFully.isChecked();
+            CalculateAutoPoints();
+            binding.textAutoPoints.setText(String.format(Locale.US,"%s - %d", autoString, autoTotalPoints));
+        });
 
         binding.buttonAutoStoragePlus.setOnClickListener(v -> {
             autoStorage++;
             myVib.vibrate(20);
             binding.textAutoStorageNr.setText(String.format(Locale.US,"%d", autoStorage));
+            CalculateAutoPoints();
+            binding.textAutoPoints.setText(String.format(Locale.US,"%s - %d", autoString, autoTotalPoints));
         });
 
         binding.buttonAutoStorageMinus.setOnClickListener(v -> {
@@ -101,6 +126,8 @@ public class ScorerActivity extends AppCompatActivity{
                 autoStorage--;
                 myVib.vibrate(20);
                 binding.textAutoStorageNr.setText(String.format(Locale.US,"%d", autoStorage));
+                CalculateAutoPoints();
+                binding.textAutoPoints.setText(String.format(Locale.US,"%s - %d", autoString, autoTotalPoints));
             }
         });
 
@@ -108,6 +135,8 @@ public class ScorerActivity extends AppCompatActivity{
             autoHub++;
             myVib.vibrate(20);
             binding.textAutoHubNr.setText(String.format(Locale.US,"%d", autoHub));
+            CalculateAutoPoints();
+            binding.textAutoPoints.setText(String.format(Locale.US,"%s - %d", autoString, autoTotalPoints));
         });
 
         binding.buttonAutoHubMinus.setOnClickListener(v -> {
@@ -115,8 +144,31 @@ public class ScorerActivity extends AppCompatActivity{
                 autoHub--;
                 myVib.vibrate(20);
                 binding.textAutoHubNr.setText(String.format(Locale.US,"%d", autoHub));
+                CalculateAutoPoints();
+                binding.textAutoPoints.setText(String.format(Locale.US,"%s - %d", autoString, autoTotalPoints));
             }
         });
+    }
+
+    public void CalculateAutoPoints() {
+        autoTotalPoints = 0;
+        if(duckDelivery)
+            autoTotalPoints += 10;
+        autoTotalPoints += autoStorage * 2 + autoHub * 6;
+        if(freightBonus) {
+            if(teamElementUsed)
+                autoTotalPoints += 20;
+            else autoTotalPoints += 10;
+        }
+        if(parkedInStorage) {
+            if(parkedFully)
+                autoTotalPoints += 6;
+            else autoTotalPoints += 3;
+        }else if(parkedInWarehouse) {
+            if(parkedFully)
+                autoTotalPoints += 10;
+            else autoTotalPoints += 5;
+        }
     }
 
     /*@Override
