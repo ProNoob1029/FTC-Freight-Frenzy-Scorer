@@ -9,6 +9,7 @@
 
     <TextView
         android:id="@+id/textView"
+        style="@style/text_theme"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -24,10 +25,12 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_new"
-        style="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
-        android:layout_width="160dp"
+        style="@style/text_theme"
+        android:layout_width="0dp"
         android:layout_height="100dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="12dp"
         android:background="@drawable/button_shape"
         android:backgroundTintMode="add"
         android:clickable="true"
@@ -43,9 +46,11 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_list"
-        style="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
-        android:layout_width="160dp"
+        style="@style/text_theme"
+        android:layout_width="0dp"
         android:layout_height="100dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="24dp"
         android:background="@drawable/button_shape"
         android:backgroundTintMode="add"
         android:clickable="true"
