@@ -3,11 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android_Studio/Projects/FTC-Freight-Frenzy-Scorer/app/src/main/res/drawable/button_shape.xml" value="0.28489583333333335" />
         <entry key="..\:/Android_Studio/Projects/FTC-Freight-Frenzy-Scorer/app/src/main/res/drawable/ic_launcher_phoenix_vector_foreground.xml" value="0.28489583333333335" />
         <entry key="..\:/Android_Studio/Projects/FTC-Freight-Frenzy-Scorer/app/src/main/res/drawable/ic_phoenix_logo.xml" value="0.28489583333333335" />
         <entry key="..\:/Android_Studio/Projects/FTC-Freight-Frenzy-Scorer/app/src/main/res/drawable/ic_phoenix_logo_doar_doar_pasarea.xml" value="0.28489583333333335" />
+        <entry key="..\:/Android_Studio/Projects/FTC-Freight-Frenzy-Scorer/app/src/main/res/drawable/text_bg.xml" value="0.28489583333333335" />
         <entry key="..\:/Android_Studio/Projects/FTC-Freight-Frenzy-Scorer/app/src/main/res/layout/activity_scorer.xml" value="0.223731884057971" />
         <entry key="..\:/Android_Studio/Projects/FTC-Freight-Frenzy-Scorer/app/src/main/res/mipmap-anydpi-v26/ic_launcher_phoenix.xml" value="0.28489583333333335" />
+        <entry key="..\:/Android_Studio/Projects/FTC-Freight-Frenzy-Scorer/app/src/main/res/mipmap-anydpi-v26/ic_launcher_phoenix_vector.xml" value="0.28489583333333335" />
+        <entry key="..\:/Android_Studio/Projects/FTC-Freight-Frenzy-Scorer/app/src/main/res/mipmap-anydpi-v26/ic_launcher_phoenix_vector_round.xml" value="0.28489583333333335" />
         <entry key="..\:/Android_Studio/Projects/FTC_FREIGHTFRENZY_Scorer/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.28489583333333335" />
         <entry key="..\:/Android_Studio/Projects/FTC_FREIGHTFRENZY_Scorer/app/src/main/res/drawable/ic_launcher_background.xml" value="0.28489583333333335" />
         <entry key="..\:/Android_Studio/Projects/FTC_FREIGHTFRENZY_Scorer/app/src/main/res/font/ncc1701a.xml" value="0.2989583333333333" />
