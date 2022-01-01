@@ -6,5 +6,5 @@ dependencyResolutionManagement {
         maven { url "https://jitpack.io" }
     }
 }
-rootProject.name = "FTC_FREIGHT FRENZY_Scorer"
+rootProject.name = "FTC Freight Frenzy Scorer"
 include ':app'
