@@ -3,26 +3,28 @@ package com.example.ftc_freightfrenzy_scorer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.widget.Button;
-
+import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.ftc_freightfrenzy_scorer.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
+
+    protected ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
 
         Vibrator myVib = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
-        Button buttonNew = findViewById(R.id.button_new);
-        Button buttonList = findViewById(R.id.button_list);
 
-        buttonNew.setOnClickListener(v -> {
+        binding.buttonNew.setOnClickListener(v -> {
             myVib.vibrate(20);
             startActivity(new Intent(MainActivity.this, ScorerActivity.class));
         });
 
-        buttonList.setOnClickListener(v -> myVib.vibrate(20));
+        binding.buttonList.setOnClickListener(v -> myVib.vibrate(20));
     }
 }
