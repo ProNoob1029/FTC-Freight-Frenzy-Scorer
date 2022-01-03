@@ -1,10 +1,10 @@
-package com.example.ftc_freightfrenzy_scorer;
+package com.example.ftc_freight_frenzy_scorer;
 
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.ftc_freightfrenzy_scorer.databinding.ActivityScorerBinding;
+import com.example.ftc_freight_frenzy_scorer.databinding.ActivityScorerBinding;
 import java.util.Locale;
 
 public class ScorerActivity extends AppCompatActivity{

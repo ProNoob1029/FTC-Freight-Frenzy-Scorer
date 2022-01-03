@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.ftc_freightfrenzy_scorer">
+    package="com.example.ftc_freight_frenzy_scorer">
     <uses-permission android:name="android.permission.VIBRATE"/>
     <application
         android:allowBackup="true"
@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FTC_FREIGHTFRENZY_Scorer">
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.ftc_freight_frenzy_scorer.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ScorerActivity"
+            android:name="com.example.ftc_freight_frenzy_scorer.ScorerActivity"
             android:configChanges="orientation|screenSize">
         </activity>
     </application>
