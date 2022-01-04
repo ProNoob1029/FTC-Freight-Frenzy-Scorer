@@ -23,6 +23,7 @@
             android:name="com.example.ftc_freight_frenzy_scorer.ScorerActivity"
             android:configChanges="orientation|screenSize">
         </activity>
+        <activity android:name=".ListActivity" />
     </application>
 
 </manifest>

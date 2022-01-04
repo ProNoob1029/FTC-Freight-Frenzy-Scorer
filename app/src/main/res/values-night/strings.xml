@@ -37,4 +37,5 @@
     <string name="minor">Minor</string>
     <string name="major">Major</string>
     <string name="total_points">Total Points:</string>
+    <string name="element">Element</string>
 </resources>

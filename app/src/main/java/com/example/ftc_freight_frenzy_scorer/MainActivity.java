@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, ScorerActivity.class));
         });
 
-        binding.buttonList.setOnClickListener(v -> myVib.vibrate(20));
+        binding.buttonList.setOnClickListener(v -> {
+            myVib.vibrate(20);
+            startActivity(new Intent(MainActivity.this, ListActivity.class));
+        });
     }
 }
