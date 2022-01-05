@@ -8,7 +8,7 @@
     android:theme="@style/Theme.FTC_FREIGHTFRENZY_Scorer">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/titleTextView"
         style="@style/text_theme"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
         app:layout_constraintEnd_toStartOf="@+id/button_list"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_list"
