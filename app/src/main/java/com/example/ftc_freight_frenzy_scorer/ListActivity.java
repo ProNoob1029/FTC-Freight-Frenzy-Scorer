@@ -3,7 +3,6 @@ package com.example.ftc_freight_frenzy_scorer;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 public class ListActivity extends AppCompatActivity {

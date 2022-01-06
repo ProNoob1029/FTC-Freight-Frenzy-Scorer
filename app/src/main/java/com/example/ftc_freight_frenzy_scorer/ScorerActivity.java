@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+
 import com.example.ftc_freight_frenzy_scorer.databinding.ActivityScorerBinding;
 import java.util.Locale;
 
@@ -345,6 +347,8 @@ public class ScorerActivity extends AppCompatActivity{
                 CalculatePenalties();
             }
         });
+
+        binding.buttonSave.setOnClickListener(v -> Save() );
     }
 
     public void CalculateAutoPoints() {
@@ -400,6 +404,24 @@ public class ScorerActivity extends AppCompatActivity{
         totalPoints = autoTotalPoints + driverTotalPoints + endgameTotalPoints + penaltiesTotal;
         binding.textTotalNr.setText(String.format(Locale.US, "%d", totalPoints));
     }
+
+    public void Save() {
+        AppDatabase db = Room.databaseBuilder(getApplicationContext(),
+                AppDatabase.class, "database-name").allowMainThreadQueries().build();
+
+        MatchDao matchDao = db.matchDao();
+
+        int lastMatch = matchDao.getlastMatch();
+        Match curentMatch = new Match();
+        if(lastMatch != 0)
+            curentMatch.id = lastMatch + 1;
+        else curentMatch.id = 1;
+        curentMatch.teamName = binding.textTeamName.getText().toString();
+        curentMatch.teamCode = binding.textTeamCode.getText().toString();
+        matchDao.insertAll(curentMatch);
+    }
+
+
 
     /*@Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
