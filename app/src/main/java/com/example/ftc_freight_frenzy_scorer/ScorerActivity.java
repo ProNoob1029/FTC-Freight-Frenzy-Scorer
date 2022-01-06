@@ -3,10 +3,17 @@ package com.example.ftc_freight_frenzy_scorer;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
+
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.room.Room;
 
 import com.example.ftc_freight_frenzy_scorer.databinding.ActivityScorerBinding;
+
+import java.util.List;
 import java.util.Locale;
 
 public class ScorerActivity extends AppCompatActivity{
@@ -49,6 +56,10 @@ public class ScorerActivity extends AppCompatActivity{
     //Total
     public int totalPoints = 0;
 
+    private MatchViewModel mMatchViewModel;
+
+    List<Match> matches;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +68,19 @@ public class ScorerActivity extends AppCompatActivity{
         setContentView(view);
 
         Vibrator myVib = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
+
+        mMatchViewModel = new ViewModelProvider(this).get(MatchViewModel.class);
+
+        /*final Observer<List<Match>> nameObserver = new Observer<List<Match>>() {
+            @Override
+            public void onChanged(@Nullable final List<Match> newMatches) {
+                // Update the UI, in this case, a TextView.
+                matches = newMatches;
+            }
+        };
+
+        // Observe the LiveData, passing in this activity as the LifecycleOwner and the observer.
+        mMatchViewModel.getAllWords().observe(this, nameObserver);*/
 
         /*SwitchCompat switchDuckDelivery = findViewById(R.id.switch_duck_delivery);
         SwitchCompat switchFreightBonus = findViewById(R.id.switch_freight_bonus);
@@ -406,19 +430,11 @@ public class ScorerActivity extends AppCompatActivity{
     }
 
     public void Save() {
-        AppDatabase db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "database-name").allowMainThreadQueries().build();
-
-        MatchDao matchDao = db.matchDao();
-
-        int lastMatch = matchDao.getlastMatch();
-        Match curentMatch = new Match();
-        if(lastMatch != 0)
-            curentMatch.id = lastMatch + 1;
-        else curentMatch.id = 1;
-        curentMatch.teamName = binding.textTeamName.getText().toString();
-        curentMatch.teamCode = binding.textTeamCode.getText().toString();
-        matchDao.insertAll(curentMatch);
+        LiveData<Integer> lastMatch = mMatchViewModel.getLastMatch();
+        Match match = new Match();
+        match.teamName = binding.textTeamName.getText().toString();
+        match.id = lastMatch.getValue() + 1;
+        mMatchViewModel.insert(match);
     }
 
 

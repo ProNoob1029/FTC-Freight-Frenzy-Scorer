@@ -1,5 +1,6 @@
 package com.example.ftc_freight_frenzy_scorer;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -10,7 +11,7 @@ import java.util.List;
 @Dao
 public interface MatchDao {
     @Query("SELECT * FROM `match`")
-    List<Match> getAll();
+    LiveData<List<Match>> getAll();
 
     @Query("SELECT * FROM `match` WHERE id IN (:userIds)")
     List<Match> loadAllByIds(int[] userIds);
@@ -19,8 +20,9 @@ public interface MatchDao {
             "teamCode LIKE :code LIMIT 1")
     Match findByName(String name, String code);
 
+    //TODO:See if this works with Match instead of Integer
     @Query("SELECT id, MAX(id) FROM `match`;")
-    int getlastMatch();
+    LiveData<Integer> getlastMatch();
 
     @Query("SELECT * FROM `match` WHERE id LIKE :position")
     Match getByPosition(int position);
@@ -30,6 +32,9 @@ public interface MatchDao {
 
     @Insert
     void insertAll(Match... matches);
+
+    @Insert
+    void insert(Match match);
 
     @Delete
     void delete(Match match);

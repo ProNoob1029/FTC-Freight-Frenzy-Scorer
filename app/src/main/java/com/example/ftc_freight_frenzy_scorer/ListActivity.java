@@ -3,11 +3,15 @@ package com.example.ftc_freight_frenzy_scorer;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class ListActivity extends AppCompatActivity {
 
     //protected ActivityListBinding binding;
+
+    private MatchViewModel mWordViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,11 +21,16 @@ public class ListActivity extends AppCompatActivity {
         setContentView(view);*/
         setContentView(R.layout.activity_list);
 
-        if (savedInstanceState == null) {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            RecyclerViewFragment fragment = new RecyclerViewFragment();
-            transaction.replace(R.id.sample_content_fragment, fragment);
-            transaction.commit();
-        }
+        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+        final MatchListAdapter adapter = new MatchListAdapter(new MatchListAdapter.MatchDiff());
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        // Get a new or existing ViewModel from the ViewModelProvider.
+        mWordViewModel = new ViewModelProvider(this).get(MatchViewModel.class);
+
+        // Update the cached copy of the words in the adapter.
+        mWordViewModel.getAllWords().observe(this, adapter::submitList);
+
     }
 }

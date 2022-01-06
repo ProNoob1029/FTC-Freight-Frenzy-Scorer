@@ -19,8 +19,8 @@
         android:textSize="34sp"
         tools:ignore="TextContrastCheck" />
 
-    <FrameLayout
-        android:id="@+id/sample_content_fragment"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="0px"
         android:layout_weight="1" />
