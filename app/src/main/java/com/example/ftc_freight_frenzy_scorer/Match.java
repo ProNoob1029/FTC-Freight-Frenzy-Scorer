@@ -2,6 +2,7 @@ package com.example.ftc_freight_frenzy_scorer;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import java.util.Date;
 
 @Entity(tableName = "match")
 public class Match {
@@ -11,4 +12,6 @@ public class Match {
     public String teamName;
 
     public String teamCode;
+
+    public String createTime;
 }

@@ -22,16 +22,21 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Date;
+
 class MatchViewHolder extends RecyclerView.ViewHolder {
-    private final TextView wordItemView;
+    private final TextView matchItemView;
+    private final TextView dateItemView;
 
     private MatchViewHolder(View itemView) {
         super(itemView);
-        wordItemView = itemView.findViewById(R.id.list_team_name);
+        matchItemView = itemView.findViewById(R.id.list_team_name);
+        dateItemView = itemView.findViewById(R.id.list_date);
     }
 
-    public void bind(String text) {
-        wordItemView.setText(text);
+    public void bind(String text, String date) {
+        matchItemView.setText(text);
+        dateItemView.setText(date);
     }
 
     static MatchViewHolder create(ViewGroup parent) {

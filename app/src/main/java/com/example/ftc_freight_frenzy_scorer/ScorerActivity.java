@@ -7,6 +7,8 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.ftc_freight_frenzy_scorer.databinding.ActivityScorerBinding;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Locale;
 
 public class ScorerActivity extends AppCompatActivity{
@@ -14,6 +16,7 @@ public class ScorerActivity extends AppCompatActivity{
     protected ActivityScorerBinding binding;
 
     public String teamName;
+    public String teamCode;
 
     ///Autonomous
     public int autoTotalPoints = 0;
@@ -422,9 +425,15 @@ public class ScorerActivity extends AppCompatActivity{
 
     public void Save() {
         teamName = binding.textTeamName.getText().toString();
-        if(!teamName.contentEquals("")){
+        teamCode = binding.textTeamCode.getText().toString();
+        if(!teamName.contentEquals("") && !teamCode.contentEquals("")){
             Match match = new Match();
+            Calendar currentTime = Calendar.getInstance();
             match.teamName = teamName;
+            match.teamCode = teamCode;
+            //currentTime.add(Calendar.MONTH, 1);
+
+            match.createTime = String.format(Locale.US, "%d %s %d", currentTime.get(Calendar.DAY_OF_MONTH), new SimpleDateFormat("MMM", Locale.US).format(currentTime.getTime()), currentTime.get(Calendar.YEAR));
             //match.id = lastMatchId + 1;
             mMatchViewModel.insert(match);
         }
