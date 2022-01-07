@@ -20,8 +20,7 @@ public interface MatchDao {
             "teamCode LIKE :code LIMIT 1")
     Match findByName(String name, String code);
 
-    //TODO:See if this works with Match instead of Integer
-    @Query("SELECT id, MAX(id) FROM `match`;")
+    @Query("SELECT MAX(id) FROM `match`;")
     LiveData<Integer> getlastMatch();
 
     @Query("SELECT * FROM `match` WHERE id LIKE :position")

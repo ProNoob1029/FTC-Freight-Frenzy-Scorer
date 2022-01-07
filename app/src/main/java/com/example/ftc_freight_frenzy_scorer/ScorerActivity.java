@@ -58,7 +58,7 @@ public class ScorerActivity extends AppCompatActivity{
 
     private MatchViewModel mMatchViewModel;
 
-    List<Match> matches;
+    public int lastMatchId = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +70,13 @@ public class ScorerActivity extends AppCompatActivity{
         Vibrator myVib = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
 
         mMatchViewModel = new ViewModelProvider(this).get(MatchViewModel.class);
+
+        mMatchViewModel.getLastMatch().observe(this, id -> {
+            // Update the cached copy of the words in the adapter.
+            if(id != null)
+                lastMatchId = id;
+            else lastMatchId = 0;
+        });
 
         /*final Observer<List<Match>> nameObserver = new Observer<List<Match>>() {
             @Override
@@ -430,10 +437,9 @@ public class ScorerActivity extends AppCompatActivity{
     }
 
     public void Save() {
-        LiveData<Integer> lastMatch = mMatchViewModel.getLastMatch();
         Match match = new Match();
         match.teamName = binding.textTeamName.getText().toString();
-        match.id = lastMatch.getValue() + 1;
+        match.id = lastMatchId + 1;
         mMatchViewModel.insert(match);
     }
 
