@@ -29,15 +29,16 @@ public class MatchListAdapter extends ListAdapter<Match, MatchViewHolder> {
         super(diffCallback);
     }
 
+    @NonNull
     @Override
-    public MatchViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MatchViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return MatchViewHolder.create(parent);
     }
 
     @Override
     public void onBindViewHolder(MatchViewHolder holder, int position) {
         Match current = getItem(position);
-        holder.bind(current.teamName);
+        holder.bind(current.id + "." + current.teamName);
     }
 
     static class MatchDiff extends DiffUtil.ItemCallback<Match> {

@@ -1,5 +1,6 @@
 package com.example.ftc_freight_frenzy_scorer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
@@ -19,6 +20,8 @@ import java.util.Locale;
 public class ScorerActivity extends AppCompatActivity{
 
     protected ActivityScorerBinding binding;
+
+    public String teamName;
 
     ///Autonomous
     public int autoTotalPoints = 0;
@@ -437,10 +440,14 @@ public class ScorerActivity extends AppCompatActivity{
     }
 
     public void Save() {
-        Match match = new Match();
-        match.teamName = binding.textTeamName.getText().toString();
-        match.id = lastMatchId + 1;
-        mMatchViewModel.insert(match);
+        teamName = binding.textTeamName.getText().toString();
+        if(!teamName.contentEquals("")){
+            Match match = new Match();
+            match.teamName = teamName;
+            match.id = lastMatchId + 1;
+            mMatchViewModel.insert(match);
+        }
+        startActivity(new Intent(ScorerActivity.this, MainActivity.class));
     }
 
 
