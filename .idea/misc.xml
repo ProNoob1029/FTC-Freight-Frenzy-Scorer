@@ -8,11 +8,7 @@
         <entry key="..\:/Android_Studio/Projects/FTC-Freight-Frenzy-Scorer/app/src/main/res/drawable/ic_phoenix_logo.xml" value="0.28489583333333335" />
         <entry key="..\:/Android_Studio/Projects/FTC-Freight-Frenzy-Scorer/app/src/main/res/drawable/ic_phoenix_logo_doar_doar_pasarea.xml" value="0.28489583333333335" />
         <entry key="..\:/Android_Studio/Projects/FTC-Freight-Frenzy-Scorer/app/src/main/res/drawable/text_bg.xml" value="0.28489583333333335" />
-        <entry key="..\:/Android_Studio/Projects/FTC-Freight-Frenzy-Scorer/app/src/main/res/layout/activity_list.xml" value="0.26875" />
-        <entry key="..\:/Android_Studio/Projects/FTC-Freight-Frenzy-Scorer/app/src/main/res/layout/activity_main.xml" value="0.26875" />
         <entry key="..\:/Android_Studio/Projects/FTC-Freight-Frenzy-Scorer/app/src/main/res/layout/activity_scorer.xml" value="0.223731884057971" />
-        <entry key="..\:/Android_Studio/Projects/FTC-Freight-Frenzy-Scorer/app/src/main/res/layout/recycler_view_frag.xml" value="0.26875" />
-        <entry key="..\:/Android_Studio/Projects/FTC-Freight-Frenzy-Scorer/app/src/main/res/layout/text_row_item.xml" value="0.13958333333333334" />
         <entry key="..\:/Android_Studio/Projects/FTC-Freight-Frenzy-Scorer/app/src/main/res/mipmap-anydpi-v26/ic_launcher_phoenix.xml" value="0.28489583333333335" />
         <entry key="..\:/Android_Studio/Projects/FTC-Freight-Frenzy-Scorer/app/src/main/res/mipmap-anydpi-v26/ic_launcher_phoenix_vector.xml" value="0.28489583333333335" />
         <entry key="..\:/Android_Studio/Projects/FTC-Freight-Frenzy-Scorer/app/src/main/res/mipmap-anydpi-v26/ic_launcher_phoenix_vector_round.xml" value="0.28489583333333335" />
@@ -44,6 +40,13 @@
         <entry key="app/src/main/res/layout/activity_scorer.xml" value="0.26197916666666665" />
       </map>
     </option>
+  </component>
+  <component name="EntryPointsManager">
+    <list size="3">
+      <item index="0" class="java.lang.String" itemvalue="androidx.room.Delete" />
+      <item index="1" class="java.lang.String" itemvalue="androidx.room.Insert" />
+      <item index="2" class="java.lang.String" itemvalue="androidx.room.Query" />
+    </list>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />

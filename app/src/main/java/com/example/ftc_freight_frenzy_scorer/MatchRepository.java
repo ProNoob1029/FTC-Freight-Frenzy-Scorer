@@ -1,25 +1,7 @@
 package com.example.ftc_freight_frenzy_scorer;
 
-/*
- * Copyright (C) 2017 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 import android.app.Application;
-
 import androidx.lifecycle.LiveData;
-
 import java.util.List;
 
 /**
@@ -29,9 +11,8 @@ import java.util.List;
 
 class MatchRepository {
 
-    private MatchDao mMatchDao;
-    private LiveData<List<Match>> mAllMatches;
-    private  LiveData<Integer> mLastMatch;
+    private final MatchDao mMatchDao;
+    private final LiveData<List<Match>> mAllMatches;
 
     // Note that in order to unit test the WordRepository, you have to remove the Application
     // dependency. This adds complexity and much more code, and this sample is not about testing.
@@ -41,7 +22,6 @@ class MatchRepository {
         AppDatabase db = AppDatabase.getDatabase(application);
         mMatchDao = db.matchDao();
         mAllMatches = mMatchDao.getAll();
-        mLastMatch = mMatchDao.getlastMatch();
     }
 
     // Room executes all queries on a separate thread.
@@ -50,15 +30,9 @@ class MatchRepository {
         return mAllMatches;
     }
 
-    LiveData<Integer> getLastMatch() {
-        return mLastMatch;
-    }
-
     // You must call this on a non-UI thread or your app will throw an exception. Room ensures
     // that you're not doing any long running operations on the main thread, blocking the UI.
     void insert(Match match) {
-        AppDatabase.databaseWriteExecutor.execute(() -> {
-            mMatchDao.insert(match);
-        });
+        AppDatabase.databaseWriteExecutor.execute(() -> mMatchDao.insert(match));
     }
 }

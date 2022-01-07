@@ -4,17 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
-
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.room.Room;
-
 import com.example.ftc_freight_frenzy_scorer.databinding.ActivityScorerBinding;
-
-import java.util.List;
 import java.util.Locale;
 
 public class ScorerActivity extends AppCompatActivity{
@@ -61,7 +53,7 @@ public class ScorerActivity extends AppCompatActivity{
 
     private MatchViewModel mMatchViewModel;
 
-    public int lastMatchId = 0;
+    //public int lastMatchId = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,23 +66,12 @@ public class ScorerActivity extends AppCompatActivity{
 
         mMatchViewModel = new ViewModelProvider(this).get(MatchViewModel.class);
 
-        mMatchViewModel.getLastMatch().observe(this, id -> {
+        /*mMatchViewModel.getLastMatch().observe(this, id -> {
             // Update the cached copy of the words in the adapter.
             if(id != null)
                 lastMatchId = id;
             else lastMatchId = 0;
-        });
-
-        /*final Observer<List<Match>> nameObserver = new Observer<List<Match>>() {
-            @Override
-            public void onChanged(@Nullable final List<Match> newMatches) {
-                // Update the UI, in this case, a TextView.
-                matches = newMatches;
-            }
-        };
-
-        // Observe the LiveData, passing in this activity as the LifecycleOwner and the observer.
-        mMatchViewModel.getAllWords().observe(this, nameObserver);*/
+        });*/
 
         /*SwitchCompat switchDuckDelivery = findViewById(R.id.switch_duck_delivery);
         SwitchCompat switchFreightBonus = findViewById(R.id.switch_freight_bonus);
@@ -444,13 +425,11 @@ public class ScorerActivity extends AppCompatActivity{
         if(!teamName.contentEquals("")){
             Match match = new Match();
             match.teamName = teamName;
-            match.id = lastMatchId + 1;
+            //match.id = lastMatchId + 1;
             mMatchViewModel.insert(match);
         }
         startActivity(new Intent(ScorerActivity.this, MainActivity.class));
     }
-
-
 
     /*@Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
