@@ -5,11 +5,13 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
+
 import java.util.List;
 
 @Dao
 public interface MatchDao {
-    @Query("SELECT * FROM `match`")
+    @Query("SELECT * FROM `match` ORDER BY id DESC")
     LiveData<List<Match>> getAll();
 
     @Query("SELECT * FROM `match` WHERE id IN (:userIds)")
@@ -36,4 +38,7 @@ public interface MatchDao {
 
     @Delete
     void delete(Match match);
+
+    @Update
+    void update(Match match);
 }

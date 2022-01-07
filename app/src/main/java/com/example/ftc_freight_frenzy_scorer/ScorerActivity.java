@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.ftc_freight_frenzy_scorer.databinding.ActivityScorerBinding;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 public class ScorerActivity extends AppCompatActivity{
@@ -56,7 +57,9 @@ public class ScorerActivity extends AppCompatActivity{
 
     private MatchViewModel mMatchViewModel;
 
-    //public int lastMatchId = 0;
+    String key;
+    int matchId;
+    List<Match> matchList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,12 +72,17 @@ public class ScorerActivity extends AppCompatActivity{
 
         mMatchViewModel = new ViewModelProvider(this).get(MatchViewModel.class);
 
-        /*mMatchViewModel.getLastMatch().observe(this, id -> {
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            key = extras.getString("key");
+            matchId = extras.getInt("id");
+            //The key argument here must match that used in the other activity
+        }
+
+        mMatchViewModel.getAllMatches().observe(this, newMatchList -> {
             // Update the cached copy of the words in the adapter.
-            if(id != null)
-                lastMatchId = id;
-            else lastMatchId = 0;
-        });*/
+            matchList = newMatchList;
+        });
 
         /*SwitchCompat switchDuckDelivery = findViewById(R.id.switch_duck_delivery);
         SwitchCompat switchFreightBonus = findViewById(R.id.switch_freight_bonus);
@@ -433,9 +441,12 @@ public class ScorerActivity extends AppCompatActivity{
             match.teamCode = teamCode;
             //currentTime.add(Calendar.MONTH, 1);
 
-            match.createTime = String.format(Locale.US, "%d %s %d", currentTime.get(Calendar.DAY_OF_MONTH), new SimpleDateFormat("MMM", Locale.US).format(currentTime.getTime()), currentTime.get(Calendar.YEAR));
-            //match.id = lastMatchId + 1;
-            mMatchViewModel.insert(match);
+            match.createTime = String.format(Locale.US, "%s %d %d:%d", new SimpleDateFormat("MMM", Locale.US).format(currentTime.getTime()), currentTime.get(Calendar.DAY_OF_MONTH), currentTime.get(Calendar.HOUR_OF_DAY), currentTime.get(Calendar.MINUTE));
+            if(key.contentEquals("edit")){
+                match.id = matchList.get(matchId).id;
+                mMatchViewModel.update(match);
+            }else mMatchViewModel.insert(match);
+
         }
         startActivity(new Intent(ScorerActivity.this, MainActivity.class));
     }

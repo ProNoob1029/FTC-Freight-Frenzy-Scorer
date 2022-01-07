@@ -26,7 +26,7 @@ class MatchRepository {
 
     // Room executes all queries on a separate thread.
     // Observed LiveData will notify the observer when the data has changed.
-    LiveData<List<Match>> getAllWords() {
+    LiveData<List<Match>> getAllMatches() {
         return mAllMatches;
     }
 
@@ -34,5 +34,9 @@ class MatchRepository {
     // that you're not doing any long running operations on the main thread, blocking the UI.
     void insert(Match match) {
         AppDatabase.databaseWriteExecutor.execute(() -> mMatchDao.insert(match));
+    }
+
+    void update(Match match) {
+        AppDatabase.databaseWriteExecutor.execute(() -> mMatchDao.update(match));
     }
 }

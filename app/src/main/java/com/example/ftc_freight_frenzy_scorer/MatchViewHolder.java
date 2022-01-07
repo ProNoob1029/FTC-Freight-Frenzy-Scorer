@@ -16,6 +16,8 @@
 
 package com.example.ftc_freight_frenzy_scorer;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,16 +29,23 @@ import java.util.Date;
 class MatchViewHolder extends RecyclerView.ViewHolder {
     private final TextView matchItemView;
     private final TextView dateItemView;
+    private int mMatch;
 
     private MatchViewHolder(View itemView) {
         super(itemView);
         matchItemView = itemView.findViewById(R.id.list_team_name);
         dateItemView = itemView.findViewById(R.id.list_date);
+        Context context = itemView.getContext();
+        itemView.setOnClickListener(view -> {
+            String value="edit";
+            context.startActivity(new Intent(context, ScorerActivity.class).putExtra("key", value).putExtra("id", mMatch));
+        });
     }
 
-    public void bind(String text, String date) {
+    public void bind(String text, String date, int match) {
         matchItemView.setText(text);
         dateItemView.setText(date);
+        mMatch = match;
     }
 
     static MatchViewHolder create(ViewGroup parent) {

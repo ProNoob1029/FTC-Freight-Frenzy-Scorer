@@ -22,14 +22,18 @@ public class MatchViewModel extends AndroidViewModel {
     public MatchViewModel(Application application) {
         super(application);
         mRepository = new MatchRepository(application);
-        mAllMatches = mRepository.getAllWords();
+        mAllMatches = mRepository.getAllMatches();
     }
 
-    LiveData<List<Match>> getAllWords() {
+    LiveData<List<Match>> getAllMatches() {
         return mAllMatches;
     }
 
     void insert(Match match) {
         mRepository.insert(match);
+    }
+
+    void update(Match match) {
+        mRepository.update(match);
     }
 }
