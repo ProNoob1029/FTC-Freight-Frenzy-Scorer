@@ -86,7 +86,7 @@ public class ScorerActivity extends AppCompatActivity{
             // Update the cached copy of the words in the adapter.
             matchList = newMatchList;
             if(key.contentEquals("edit"))
-                InsertValues();
+                InsertValues(view);
         });
 
         binding.buttonTeamRed.setOnClickListener(v -> {
@@ -440,32 +440,40 @@ public class ScorerActivity extends AppCompatActivity{
     public void Save() {
         teamName = binding.textTeamName.getText().toString();
         teamCode = binding.textTeamCode.getText().toString();
-        if(!teamName.contentEquals("") && !teamCode.contentEquals("")){
+        if(!teamName.contentEquals("") && !teamCode.contentEquals("") && !teamColor.contentEquals("")){
             Match match = new Match();
             Calendar currentTime = Calendar.getInstance();
             match.teamName = teamName;
             match.teamCode = teamCode;
+            match.teamColor = teamColor;
             //currentTime.add(Calendar.MONTH, 1);
 
             match.createTime = String.format(Locale.US, "%s %d %d:%d", new SimpleDateFormat("MMM", Locale.US).format(currentTime.getTime()), currentTime.get(Calendar.DAY_OF_MONTH), currentTime.get(Calendar.HOUR_OF_DAY), currentTime.get(Calendar.MINUTE));
             if(key.contentEquals("edit")){
                 match.id = matchList.get(matchId).id;
                 mMatchViewModel.update(match);
-                startActivity(new Intent(ScorerActivity.this, ListActivity.class));
             }else {
                 mMatchViewModel.insert(match);
-                startActivity(new Intent(ScorerActivity.this, MainActivity.class));
             }
-
+            finish();
         }else Toast.makeText(
                 getApplicationContext(),
                 R.string.empty_not_saved,
                 Toast.LENGTH_LONG).show();
     }
 
-    public void InsertValues() {
+    public void InsertValues(View view) {
         binding.textTeamName.setText(matchList.get(matchId).teamName);
         binding.textTeamCode.setText(matchList.get(matchId).teamCode);
+        if(matchList.get(matchId).teamColor.contentEquals("red")) {
+            binding.buttonTeamRed.setTextAppearance(view.getContext(), R.style.button_theme);
+            binding.buttonTeamRed.setBackground(ContextCompat.getDrawable(view.getContext(), R.drawable.button_shape_red));
+            teamColor = "red";
+        }else {
+            binding.buttonTeamBlue.setTextAppearance(view.getContext(), R.style.button_theme);
+            binding.buttonTeamBlue.setBackground(ContextCompat.getDrawable(view.getContext(), R.drawable.button_shape_blue));
+            teamColor = "blue";
+        }
     }
 
     /*@Override

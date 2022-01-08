@@ -14,4 +14,6 @@ public class Match {
     public String teamCode;
 
     public String createTime;
+
+    public String teamColor;
 }
