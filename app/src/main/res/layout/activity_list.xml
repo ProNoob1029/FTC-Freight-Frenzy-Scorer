@@ -17,7 +17,8 @@
         android:textAlignment="center"
         android:textAppearance="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
         android:textSize="34sp"
-        tools:ignore="TextContrastCheck" />
+        tools:ignore="TextContrastCheck"
+        android:backgroundTintMode="src_atop"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"

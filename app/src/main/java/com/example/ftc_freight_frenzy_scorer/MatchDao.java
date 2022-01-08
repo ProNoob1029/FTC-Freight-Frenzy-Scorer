@@ -12,6 +12,9 @@ import java.util.List;
 @Dao
 public interface MatchDao {
     @Query("SELECT * FROM `match` ORDER BY id DESC")
+    LiveData<List<Match>> getAllDesc();
+
+    @Query("SELECT * FROM `match`")
     LiveData<List<Match>> getAll();
 
     @Query("SELECT * FROM `match` WHERE id IN (:userIds)")
@@ -20,9 +23,6 @@ public interface MatchDao {
     @Query("SELECT * FROM `match` WHERE teamName LIKE :name AND " +
             "teamCode LIKE :code LIMIT 1")
     Match findByName(String name, String code);
-
-    @Query("SELECT MAX(id) FROM `match`;")
-    LiveData<Integer> getlastMatch();
 
     @Query("SELECT * FROM `match` WHERE id LIKE :position")
     Match getByPosition(int position);
@@ -35,9 +35,6 @@ public interface MatchDao {
 
     @Insert
     void insert(Match match);
-
-    @Delete
-    void delete(Match match);
 
     @Update
     void update(Match match);

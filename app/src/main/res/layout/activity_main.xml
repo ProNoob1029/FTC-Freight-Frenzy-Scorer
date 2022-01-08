@@ -13,6 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:backgroundTintMode="src_atop"
         android:fontFamily="@font/ncc1701a"
         android:text="@string/phoenix_ro_026"
         android:textAlignment="center"

@@ -18,15 +18,21 @@ public class MatchViewModel extends AndroidViewModel {
     //   the UI when the data actually changes.
     // - Repository is completely separated from the UI through the ViewModel.
     private final LiveData<List<Match>> mAllMatches;
+    private final LiveData<List<Match>> mAllMatchesDesc;
 
     public MatchViewModel(Application application) {
         super(application);
         mRepository = new MatchRepository(application);
         mAllMatches = mRepository.getAllMatches();
+        mAllMatchesDesc = mRepository.getAllMatchesDesc();
     }
 
     LiveData<List<Match>> getAllMatches() {
         return mAllMatches;
+    }
+
+    LiveData<List<Match>> getAllMatchesDesc() {
+        return mAllMatchesDesc;
     }
 
     void insert(Match match) {

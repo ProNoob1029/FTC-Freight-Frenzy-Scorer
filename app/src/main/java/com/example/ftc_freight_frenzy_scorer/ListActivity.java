@@ -22,7 +22,7 @@ public class ListActivity extends AppCompatActivity {
         MatchViewModel mWordViewModel = new ViewModelProvider(this).get(MatchViewModel.class);
 
         // Update the cached copy of the words in the adapter.
-        mWordViewModel.getAllMatches().observe(this, adapter::submitList);
+        mWordViewModel.getAllMatchesDesc().observe(this, adapter::submitList);
 
     }
 }

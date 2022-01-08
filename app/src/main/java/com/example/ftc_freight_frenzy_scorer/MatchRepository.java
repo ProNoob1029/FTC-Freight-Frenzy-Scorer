@@ -13,6 +13,7 @@ class MatchRepository {
 
     private final MatchDao mMatchDao;
     private final LiveData<List<Match>> mAllMatches;
+    private final LiveData<List<Match>> mAllMatchesDesc;
 
     // Note that in order to unit test the WordRepository, you have to remove the Application
     // dependency. This adds complexity and much more code, and this sample is not about testing.
@@ -22,12 +23,17 @@ class MatchRepository {
         AppDatabase db = AppDatabase.getDatabase(application);
         mMatchDao = db.matchDao();
         mAllMatches = mMatchDao.getAll();
+        mAllMatchesDesc = mMatchDao.getAllDesc();
     }
 
     // Room executes all queries on a separate thread.
     // Observed LiveData will notify the observer when the data has changed.
     LiveData<List<Match>> getAllMatches() {
         return mAllMatches;
+    }
+
+    LiveData<List<Match>> getAllMatchesDesc() {
+        return mAllMatchesDesc;
     }
 
     // You must call this on a non-UI thread or your app will throw an exception. Room ensures

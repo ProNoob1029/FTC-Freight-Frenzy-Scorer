@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.ftc_freight_frenzy_scorer.databinding.ActivityScorerBinding;
@@ -75,29 +77,16 @@ public class ScorerActivity extends AppCompatActivity{
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             key = extras.getString("key");
-            matchId = extras.getInt("id");
+            matchId = extras.getInt("id") - 1;
             //The key argument here must match that used in the other activity
         }
 
         mMatchViewModel.getAllMatches().observe(this, newMatchList -> {
             // Update the cached copy of the words in the adapter.
             matchList = newMatchList;
+            if(key.contentEquals("edit"))
+                InsertValues();
         });
-
-        /*SwitchCompat switchDuckDelivery = findViewById(R.id.switch_duck_delivery);
-        SwitchCompat switchFreightBonus = findViewById(R.id.switch_freight_bonus);
-        SwitchCompat switchTeamElementUsed = findViewById(R.id.switch_team_element_used);
-        switchTeamElementsUsedRef = switchTeamElementUsed;
-        SwitchCompat switchParkedInStorage = findViewById(R.id.switch_auto_parked_in_storage);
-        SwitchCompat switchParkedInWarehouse = findViewById(R.id.switch_auto_parked_in_warehouse);
-        SwitchCompat switchParkedFully = findViewById(R.id.switch_auto_parked_fully);
-        switchParkedFullyRef = switchParkedFully;
-        TextView textAutoStorage = findViewById(R.id.text_auto_storage_nr);
-        TextView textAutoHub = findViewById(R.id.text_auto_hub_nr);
-        Button buttonAutoStoragePlus = findViewById(R.id.button_auto_storage_plus);
-        Button buttonAutoStorageMinus = findViewById(R.id.button_auto_storage_minus);
-        Button buttonAutoHubPlus = findViewById(R.id.button_auto_hub_plus);
-        Button buttonAutoHubMinus = findViewById(R.id.button_auto_hub_minus);*/
 
         ///Autonomous
 
@@ -445,10 +434,21 @@ public class ScorerActivity extends AppCompatActivity{
             if(key.contentEquals("edit")){
                 match.id = matchList.get(matchId).id;
                 mMatchViewModel.update(match);
-            }else mMatchViewModel.insert(match);
+                startActivity(new Intent(ScorerActivity.this, ListActivity.class));
+            }else {
+                mMatchViewModel.insert(match);
+                startActivity(new Intent(ScorerActivity.this, MainActivity.class));
+            }
 
-        }
-        startActivity(new Intent(ScorerActivity.this, MainActivity.class));
+        }else Toast.makeText(
+                getApplicationContext(),
+                R.string.empty_not_saved,
+                Toast.LENGTH_LONG).show();
+    }
+
+    public void InsertValues() {
+        binding.textTeamName.setText(matchList.get(matchId).teamName);
+        binding.textTeamCode.setText(matchList.get(matchId).teamCode);
     }
 
     /*@Override

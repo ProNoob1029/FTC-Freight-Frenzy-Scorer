@@ -28,12 +28,13 @@
                 android:fontFamily="sans-serif-medium"
                 android:text="@string/score_match"
                 android:textAlignment="center"
-                android:textAppearance="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
+                android:textAppearance="@style/text_theme"
                 android:textSize="34sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="TextContrastCheck" />
+                tools:ignore="TextContrastCheck"
+                android:backgroundTintMode="src_atop"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -46,12 +47,12 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:autofillHints="team name"
-                    android:ems="10"
                     android:fontFamily="sans-serif-medium"
                     android:hint="@string/team_name"
                     android:inputType="none"
                     android:singleLine="true"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textCursorDrawable="@color/zero"
                     android:textSize="24sp"
                     android:typeface="normal"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -65,7 +66,6 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:autofillHints="team name"
-                    android:ems="10"
                     android:fontFamily="sans-serif-medium"
                     android:hint="@string/team_code"
                     android:inputType="none"
@@ -99,7 +99,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="RtlSymmetry,TextContrastCheck" />
+                    tools:ignore="RtlSymmetry,TextContrastCheck"
+                    android:backgroundTintMode="src_atop"/>
 
                 <TextView
                     android:id="@+id/text_auto_total_points_nr"
@@ -116,7 +117,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="RtlSymmetry,TextContrastCheck" />
+                    tools:ignore="RtlSymmetry,TextContrastCheck"
+                    android:backgroundTintMode="src_atop"/>
 
             </LinearLayout>
 
@@ -401,7 +403,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="RtlSymmetry,TextContrastCheck" />
+                    tools:ignore="RtlSymmetry,TextContrastCheck"
+                    android:backgroundTintMode="src_atop"/>
 
                 <TextView
                     android:id="@+id/text_driver_total_points_nr"
@@ -418,7 +421,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="RtlSymmetry,TextContrastCheck" />
+                    tools:ignore="RtlSymmetry,TextContrastCheck"
+                    android:backgroundTintMode="src_atop"/>
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -814,7 +818,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="RtlSymmetry,TextContrastCheck" />
+                    tools:ignore="RtlSymmetry,TextContrastCheck"
+                    android:backgroundTintMode="src_atop"/>
 
                 <TextView
                     android:id="@+id/text_endgame_total_points_nr"
@@ -831,7 +836,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="RtlSymmetry,TextContrastCheck" />
+                    tools:ignore="RtlSymmetry,TextContrastCheck"
+                    android:backgroundTintMode="src_atop"/>
 
             </LinearLayout>
 
@@ -1085,7 +1091,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="RtlSymmetry,TextContrastCheck" />
+                    tools:ignore="RtlSymmetry,TextContrastCheck"
+                    android:backgroundTintMode="src_atop"/>
 
                 <TextView
                     android:id="@+id/text_penalties_nr"
@@ -1102,7 +1109,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="RtlSymmetry,TextContrastCheck" />
+                    tools:ignore="RtlSymmetry,TextContrastCheck"
+                    android:backgroundTintMode="src_atop"/>
 
             </LinearLayout>
 
@@ -1126,7 +1134,8 @@
                     app:layout_constraintEnd_toStartOf="@id/text_penalties_major_nr"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/text_penalties_major_nr"
-                    tools:ignore="TextContrastCheck" />
+                    tools:ignore="TextContrastCheck"
+                    android:backgroundTintMode="src_atop"/>
 
                 <TextView
                     android:id="@+id/text_penalties_major_nr"
@@ -1142,7 +1151,8 @@
                     app:layout_constraintEnd_toEndOf="@id/text_penalties_minor_nr"
                     app:layout_constraintStart_toStartOf="@id/text_penalties_minor_nr"
                     app:layout_constraintTop_toTopOf="@id/button_penalties_major_minus"
-                    tools:ignore="TextContrastCheck" />
+                    tools:ignore="TextContrastCheck"
+                    android:backgroundTintMode="src_atop"/>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_penalties_major_plus"
@@ -1181,7 +1191,8 @@
                     app:layout_constraintEnd_toStartOf="@id/text_penalties_minor_nr"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/text_penalties_minor_nr"
-                    tools:ignore="TextContrastCheck" />
+                    tools:ignore="TextContrastCheck"
+                    android:backgroundTintMode="src_atop"/>
 
                 <TextView
                     android:id="@+id/text_penalties_minor_nr"
@@ -1199,7 +1210,8 @@
                     app:layout_constraintEnd_toStartOf="@id/button_penalties_minor_minus"
                     app:layout_constraintStart_toEndOf="@id/text_penalties_minor"
                     app:layout_constraintTop_toTopOf="@id/button_penalties_minor_minus"
-                    tools:ignore="TextContrastCheck" />
+                    tools:ignore="TextContrastCheck"
+                    android:backgroundTintMode="src_atop"/>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_penalties_minor_minus"
@@ -1281,7 +1293,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="RtlSymmetry,TextContrastCheck" />
+                    tools:ignore="RtlSymmetry,TextContrastCheck"
+                    android:backgroundTintMode="src_atop"/>
 
                 <TextView
                     android:id="@+id/text_total_nr"
@@ -1298,7 +1311,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="RtlSymmetry,TextContrastCheck" />
+                    tools:ignore="RtlSymmetry,TextContrastCheck"
+                    android:backgroundTintMode="src_atop"/>
 
             </LinearLayout>
 
