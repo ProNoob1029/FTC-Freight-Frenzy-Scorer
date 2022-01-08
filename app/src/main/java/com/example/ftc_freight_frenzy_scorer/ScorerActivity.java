@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.ftc_freight_frenzy_scorer.databinding.ActivityScorerBinding;
 import java.text.SimpleDateFormat;
@@ -20,6 +20,7 @@ public class ScorerActivity extends AppCompatActivity{
 
     public String teamName;
     public String teamCode;
+    public String teamColor;
 
     ///Autonomous
     public int autoTotalPoints = 0;
@@ -86,6 +87,22 @@ public class ScorerActivity extends AppCompatActivity{
             matchList = newMatchList;
             if(key.contentEquals("edit"))
                 InsertValues();
+        });
+
+        binding.buttonTeamRed.setOnClickListener(v -> {
+            binding.buttonTeamRed.setTextAppearance(view.getContext(), R.style.button_theme);
+            binding.buttonTeamRed.setBackground(ContextCompat.getDrawable(view.getContext(), R.drawable.button_shape_red));
+            binding.buttonTeamBlue.setTextAppearance(view.getContext(), R.style.Theme_FTC_FREIGHTFRENZY_Scorer);
+            binding.buttonTeamBlue.setBackgroundColor(getResources().getColor(R.color.zero));
+            teamColor = "red";
+        });
+
+        binding.buttonTeamBlue.setOnClickListener(v -> {
+            binding.buttonTeamRed.setTextAppearance(view.getContext(), R.style.Theme_FTC_FREIGHTFRENZY_Scorer);
+            binding.buttonTeamRed.setBackgroundColor(getResources().getColor(R.color.zero));
+            binding.buttonTeamBlue.setTextAppearance(view.getContext(), R.style.button_theme);
+            binding.buttonTeamBlue.setBackground(ContextCompat.getDrawable(view.getContext(), R.drawable.button_shape_blue));
+            teamColor = "blue";
         });
 
         ///Autonomous
