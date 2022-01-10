@@ -5,6 +5,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 
+import java.util.Locale;
+
 public class MatchListAdapter extends ListAdapter<Match, MatchViewHolder> {
 
     public MatchListAdapter(@NonNull DiffUtil.ItemCallback<Match> diffCallback) {
@@ -20,7 +22,7 @@ public class MatchListAdapter extends ListAdapter<Match, MatchViewHolder> {
     @Override
     public void onBindViewHolder(MatchViewHolder holder, int position) {
         Match current = getItem(position);
-        holder.bind(current.teamName, current.createTime, current.id);
+        holder.bind(String.format(Locale.US, "%d. %s", current.id, current.teamName), current.createTime, current.id);
     }
 
     static class MatchDiff extends DiffUtil.ItemCallback<Match> {

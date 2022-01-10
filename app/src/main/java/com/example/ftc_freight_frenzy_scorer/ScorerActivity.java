@@ -1,14 +1,16 @@
 package com.example.ftc_freight_frenzy_scorer;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
+
 import com.example.ftc_freight_frenzy_scorer.databinding.ActivityScorerBinding;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -43,7 +45,7 @@ public class ScorerActivity extends AppCompatActivity{
 
     ///Endgame
     public int endgameTotalPoints = 0;
-    public int carouselDelivery = 0;
+    public int carouselDucks = 0;
     public boolean balancedShipping = false;
     public boolean leaningShared = false;
     public boolean endgameParked = false;
@@ -167,6 +169,7 @@ public class ScorerActivity extends AppCompatActivity{
             if(!binding.switchAutoParkedInStorage.isChecked()){
                 binding.switchAutoParkedFully.setVisibility(View.GONE);
                 binding.switchAutoParkedFully.setChecked(false);
+                autoParkedFully = false;
                 autoParkedInStorage = false;
 
             }
@@ -183,6 +186,7 @@ public class ScorerActivity extends AppCompatActivity{
             if(!binding.switchAutoParkedInWarehouse.isChecked()){
                 binding.switchAutoParkedFully.setVisibility(View.GONE);
                 binding.switchAutoParkedFully.setChecked(false);
+                autoParkedFully = false;
                 autoParkedInWarehouse = false;
             }
             else {
@@ -284,19 +288,19 @@ public class ScorerActivity extends AppCompatActivity{
         ///Endgame
 
         binding.buttonEndgameCarouselPlus.setOnClickListener(v -> {
-            if(carouselDelivery < 12) {
-                carouselDelivery++;
+            if(carouselDucks < 12) {
+                carouselDucks++;
                 myVib.vibrate(20);
-                binding.textEndgameCarouselNr.setText(String.format(Locale.US,"%d", carouselDelivery));
+                binding.textEndgameCarouselNr.setText(String.format(Locale.US,"%d", carouselDucks));
                 CalculateEndgamePoints();
             }
         });
 
         binding.buttonEndgameCarouselMinus.setOnClickListener(v -> {
-            if(carouselDelivery > 0){
-                carouselDelivery--;
+            if(carouselDucks > 0){
+                carouselDucks--;
                 myVib.vibrate(20);
-                binding.textEndgameCarouselNr.setText(String.format(Locale.US,"%d", carouselDelivery));
+                binding.textEndgameCarouselNr.setText(String.format(Locale.US,"%d", carouselDucks));
                 CalculateEndgamePoints();
             }
         });
@@ -412,7 +416,7 @@ public class ScorerActivity extends AppCompatActivity{
     }
 
     public void CalculateEndgamePoints() {
-        endgameTotalPoints = 6 * carouselDelivery + 15 * capping;
+        endgameTotalPoints = 6 * carouselDucks + 15 * capping;
         if(balancedShipping)
             endgameTotalPoints += 10;
         if(leaningShared)
@@ -446,13 +450,49 @@ public class ScorerActivity extends AppCompatActivity{
             match.teamName = teamName;
             match.teamCode = teamCode;
             match.teamColor = teamColor;
-            //currentTime.add(Calendar.MONTH, 1);
 
-            match.createTime = String.format(Locale.US, "%s %d %d:%d", new SimpleDateFormat("MMM", Locale.US).format(currentTime.getTime()), currentTime.get(Calendar.DAY_OF_MONTH), currentTime.get(Calendar.HOUR_OF_DAY), currentTime.get(Calendar.MINUTE));
+            ///Autonomous
+            match.autoTotalPoints = autoTotalPoints;
+            match.duckDelivery = duckDelivery;
+            match.autoStorage = autoStorage;
+            match.autoHub = autoHub;
+            match.freightBonus = freightBonus;
+            match.teamElementUsed = teamElementUsed;
+            match.autoParkedInStorage = autoParkedInStorage;
+            match.autoParkedInWarehouse = autoParkedInWarehouse;
+            match.autoParkedFully = autoParkedFully;
+
+            ///Driver
+            match.driverTotalPoints = driverTotalPoints;
+            match.driverStorage = driverStorage;
+            match.driverHubL1 = driverHubL1;
+            match.driverHubL2 = driverHubL2;
+            match.driverHubL3 = driverHubL3;
+            match.driverShared = driverShared;
+
+            ///Endgame
+            match.endgameTotalPoints = endgameTotalPoints;
+            match.carouselDucks = carouselDucks;
+            match.balancedShipping = balancedShipping;
+            match.leaningShared = leaningShared;
+            match.endgameParked = endgameParked;
+            match.endgameFullyParked = endgameFullyParked;
+            match.capping = capping;
+
+            //Penalties
+            match.penaltiesTotal = penaltiesTotal;
+            match.penaltiesMinor = penaltiesMinor;
+            match.penaltiesMajor = penaltiesMajor;
+
+            //Total
+            match.totalPoints = totalPoints;
+
             if(key.contentEquals("edit")){
                 match.id = matchList.get(matchId).id;
+                match.createTime = matchList.get(matchId).createTime;
                 mMatchViewModel.update(match);
             }else {
+                match.createTime = String.format(Locale.US, "%s %d %d:%d", new SimpleDateFormat("MMM", Locale.US).format(currentTime.getTime()), currentTime.get(Calendar.DAY_OF_MONTH), currentTime.get(Calendar.HOUR_OF_DAY), currentTime.get(Calendar.MINUTE));
                 mMatchViewModel.insert(match);
             }
             finish();
@@ -474,6 +514,83 @@ public class ScorerActivity extends AppCompatActivity{
             binding.buttonTeamBlue.setBackground(ContextCompat.getDrawable(view.getContext(), R.drawable.button_shape_blue));
             teamColor = "blue";
         }
+
+        ///Autonomous
+        autoTotalPoints = matchList.get(matchId).autoTotalPoints;
+        duckDelivery = matchList.get(matchId).duckDelivery;
+        autoStorage = matchList.get(matchId).autoStorage;
+        autoHub = matchList.get(matchId).autoHub;
+        freightBonus = matchList.get(matchId).freightBonus;
+        teamElementUsed = matchList.get(matchId).teamElementUsed;
+        autoParkedInStorage = matchList.get(matchId).autoParkedInStorage;
+        autoParkedInWarehouse = matchList.get(matchId).autoParkedInWarehouse;
+        autoParkedFully = matchList.get(matchId).autoParkedFully;
+
+        ///Driver
+        driverTotalPoints = matchList.get(matchId).driverTotalPoints;
+        driverStorage = matchList.get(matchId).driverStorage;
+        driverHubL1 = matchList.get(matchId).driverHubL1;
+        driverHubL2 = matchList.get(matchId).driverHubL2;
+        driverHubL3 = matchList.get(matchId).driverHubL3;
+        driverShared = matchList.get(matchId).driverShared;
+
+        ///Endgame
+        endgameTotalPoints = matchList.get(matchId).endgameTotalPoints;
+        carouselDucks = matchList.get(matchId).carouselDucks;
+        balancedShipping = matchList.get(matchId).balancedShipping;
+        leaningShared = matchList.get(matchId).leaningShared;
+        endgameParked = matchList.get(matchId).endgameParked;
+        endgameFullyParked = matchList.get(matchId).endgameFullyParked;
+        capping = matchList.get(matchId).capping;
+
+        //Penalties
+        penaltiesTotal = matchList.get(matchId).penaltiesTotal;
+        penaltiesMinor = matchList.get(matchId).penaltiesMinor;
+        penaltiesMajor = matchList.get(matchId).penaltiesMajor;
+
+        //Total
+        totalPoints = matchList.get(matchId).totalPoints;
+
+        //Autonomous
+        binding.textAutoTotalPointsNr.setText(String.format(Locale.US,"%d", autoTotalPoints));
+        binding.switchDuckDelivery.setChecked(duckDelivery);
+        binding.textAutoStorageNr.setText(String.format(Locale.US,"%d", autoStorage));
+        binding.textAutoHubNr.setText(String.format(Locale.US,"%d", autoHub));
+        binding.switchFreightBonus.setChecked(freightBonus);
+        binding.switchAutoParkedInStorage.setChecked(autoParkedInStorage);
+        binding.switchAutoParkedInWarehouse.setChecked(autoParkedInWarehouse);
+        binding.switchAutoParkedFully.setChecked(autoParkedFully);
+
+        //Driver
+
+        binding.textDriverTotalPointsNr.setText(String.format(Locale.US, "%d", driverTotalPoints));
+        binding.textDriverStorageNr.setText(String.format(Locale.US,"%d", driverStorage));
+        binding.textDriverHubL1Nr.setText(String.format(Locale.US,"%d", driverHubL1));
+        binding.textDriverHubL2Nr.setText(String.format(Locale.US,"%d", driverHubL2));
+        binding.textDriverHubL3Nr.setText(String.format(Locale.US,"%d", driverHubL3));
+        binding.textDriverSharedNr.setText(String.format(Locale.US,"%d", driverShared));
+
+        //Endgame
+        binding.textEndgameTotalPointsNr.setText(String.format(Locale.US, "%d", endgameTotalPoints));
+        binding.textEndgameCarouselNr.setText(String.format(Locale.US,"%d", carouselDucks));
+        binding.switchEndgameBalancedShipping.setChecked(balancedShipping);
+        binding.switchEndgameLeaningShared.setChecked(leaningShared);
+        binding.switchEndgameParked.setChecked(endgameParked);
+        binding.switchEndgameParkedFully.setChecked(endgameFullyParked);
+        binding.textEndgameCappingNr.setText(String.format(Locale.US,"%d", capping));
+
+        //Penalties
+        binding.textPenaltiesNr.setText(String.format(Locale.US, "%d", penaltiesTotal));
+        binding.textPenaltiesMinorNr.setText(String.format(Locale.US,"%d", penaltiesMinor));
+        binding.textPenaltiesMajorNr.setText(String.format(Locale.US,"%d", penaltiesMajor));
+        binding.textTotalNr.setText(String.format(Locale.US, "%d", totalPoints));
+
+        if(autoParkedInStorage || autoParkedInWarehouse)
+            binding.switchAutoParkedFully.setVisibility((View.VISIBLE));
+
+        if(endgameParked)
+            binding.switchEndgameParkedFully.setVisibility(View.VISIBLE);
+
     }
 
     /*@Override
