@@ -1,9 +1,12 @@
-package com.phoenixro026.ftc_freight_frenzy_scorer;
+package com.phoenixro026.ftc_freight_frenzy_scorer.recycleview;
 
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
+
+import com.phoenixro026.ftc_freight_frenzy_scorer.database.Match;
 
 import java.util.Locale;
 
@@ -25,7 +28,7 @@ public class MatchListAdapter extends ListAdapter<Match, MatchViewHolder> {
         holder.bind(String.format(Locale.US, "%d. %s", current.id, current.teamName), current.createTime, current.id);
     }
 
-    static class MatchDiff extends DiffUtil.ItemCallback<Match> {
+    public static class MatchDiff extends DiffUtil.ItemCallback<Match> {
 
         @Override
         public boolean areItemsTheSame(@NonNull Match oldItem, @NonNull Match newItem) {

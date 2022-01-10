@@ -1,10 +1,12 @@
-package com.phoenixro026.ftc_freight_frenzy_scorer;
+package com.phoenixro026.ftc_freight_frenzy_scorer.database;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
+
+import com.phoenixro026.ftc_freight_frenzy_scorer.database.Match;
 
 import java.util.List;
 

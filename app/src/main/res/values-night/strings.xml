@@ -39,7 +39,7 @@
     <string name="total_points">Total Points:</string>
     <string name="element">Element</string>
     <string name="save">Save</string>
-    <string name="empty_not_saved">Match not saved because team name or code is empty.</string>
+    <string name="empty_not_saved">Team details are empty</string>
     <string name="team_red">Team Red</string>
     <string name="team_blue">Team Blue</string>
 </resources>

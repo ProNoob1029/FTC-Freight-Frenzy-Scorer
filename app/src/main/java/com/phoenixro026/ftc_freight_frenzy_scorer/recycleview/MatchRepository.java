@@ -1,7 +1,12 @@
-package com.phoenixro026.ftc_freight_frenzy_scorer;
+package com.phoenixro026.ftc_freight_frenzy_scorer.recycleview;
 
 import android.app.Application;
 import androidx.lifecycle.LiveData;
+
+import com.phoenixro026.ftc_freight_frenzy_scorer.database.AppDatabase;
+import com.phoenixro026.ftc_freight_frenzy_scorer.database.Match;
+import com.phoenixro026.ftc_freight_frenzy_scorer.database.MatchDao;
+
 import java.util.List;
 
 /**

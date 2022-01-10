@@ -9,7 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.phoenixro026.ftc_freight_frenzy_scorer.database.Match;
 import com.phoenixro026.ftc_freight_frenzy_scorer.databinding.ActivityScorerBinding;
+import com.phoenixro026.ftc_freight_frenzy_scorer.recycleview.MatchViewModel;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -504,7 +506,7 @@ public class ScorerActivity extends AppCompatActivity{
         }else Toast.makeText(
                 getApplicationContext(),
                 R.string.empty_not_saved,
-                Toast.LENGTH_LONG).show();
+                Toast.LENGTH_SHORT).show();
     }
 
     public void InsertValues(View view) {
@@ -597,26 +599,4 @@ public class ScorerActivity extends AppCompatActivity{
             binding.switchEndgameParkedFully.setVisibility(View.VISIBLE);
 
     }
-
-    /*@Override
-    public void onConfigurationChanged(@NonNull Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-
-        // Checks the orientation of the screen
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            if(!(parkedInStorage || parkedInWarehouse))
-                switchParkedFullyRef.setVisibility(View.GONE);
-            else switchParkedFullyRef.setVisibility(View.VISIBLE);
-            if(!freightBonus)
-                switchTeamElementsUsedRef.setVisibility(View.GONE);
-            else switchTeamElementsUsedRef.setVisibility(View.VISIBLE);
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-            if(!(parkedInStorage || parkedInWarehouse))
-                switchParkedFullyRef.setVisibility(View.GONE);
-            else switchParkedFullyRef.setVisibility(View.VISIBLE);
-            if(!freightBonus)
-                switchTeamElementsUsedRef.setVisibility(View.GONE);
-            else switchTeamElementsUsedRef.setVisibility(View.VISIBLE);
-        }
-    }*/
 }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.phoenixro026.ftc_freight_frenzy_scorer;
+package com.phoenixro026.ftc_freight_frenzy_scorer.recycleview;
 
 import android.content.Context;
 import android.content.Intent;
@@ -24,6 +24,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.phoenixro026.ftc_freight_frenzy_scorer.R;
+import com.phoenixro026.ftc_freight_frenzy_scorer.ScorerActivity;
 
 class MatchViewHolder extends RecyclerView.ViewHolder {
     private final TextView matchItemView;

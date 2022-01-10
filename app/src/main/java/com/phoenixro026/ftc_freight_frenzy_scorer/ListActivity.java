@@ -7,6 +7,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.phoenixro026.ftc_freight_frenzy_scorer.recycleview.MatchListAdapter;
+import com.phoenixro026.ftc_freight_frenzy_scorer.recycleview.MatchViewModel;
+
 public class ListActivity extends AppCompatActivity {
 
     @Override
