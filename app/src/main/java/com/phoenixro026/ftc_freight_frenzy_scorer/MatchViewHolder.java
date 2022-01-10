@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.ftc_freight_frenzy_scorer;
+package com.phoenixro026.ftc_freight_frenzy_scorer;
 
 import android.content.Context;
 import android.content.Intent;
@@ -22,9 +22,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.Date;
+import androidx.recyclerview.widget.RecyclerView;
 
 class MatchViewHolder extends RecyclerView.ViewHolder {
     private final TextView matchItemView;

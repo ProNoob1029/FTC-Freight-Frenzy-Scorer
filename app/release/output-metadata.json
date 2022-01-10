@@ -4,15 +4,15 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.example.ftc_freightfrenzy_scorer",
+  "applicationId": "com.phoenixro026.ftc_freight_frenzy_scorer",
   "variantName": "release",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
       "attributes": [],
-      "versionCode": 3,
-      "versionName": "1.2",
+      "versionCode": 4,
+      "versionName": "2.0",
       "outputFile": "app-release.apk"
     }
   ],

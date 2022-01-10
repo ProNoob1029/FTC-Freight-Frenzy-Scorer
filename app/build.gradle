@@ -10,7 +10,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.ftc_freightfrenzy_scorer"
+        applicationId "com.phoenixro026.ftc_freight_frenzy_scorer"
         minSdk 21
         targetSdk 30
         versionCode 4

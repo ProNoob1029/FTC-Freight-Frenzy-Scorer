@@ -5,7 +5,7 @@
     style="@style/bg_theme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="com.phoenixro026.ftc_freight_frenzy_scorer.MainActivity">
 
     <TextView
         android:id="@+id/titleTextView"

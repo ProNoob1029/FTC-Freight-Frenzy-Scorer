@@ -1,4 +1,4 @@
-package com.example.ftc_freight_frenzy_scorer;
+package com.phoenixro026.ftc_freight_frenzy_scorer;
 
 import org.junit.Test;
 

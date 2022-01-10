@@ -1,4 +1,4 @@
-package com.example.ftc_freight_frenzy_scorer;
+package com.phoenixro026.ftc_freight_frenzy_scorer;
 
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.ftc_freight_frenzy_scorer.databinding.ActivityScorerBinding;
+import com.phoenixro026.ftc_freight_frenzy_scorer.databinding.ActivityScorerBinding;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

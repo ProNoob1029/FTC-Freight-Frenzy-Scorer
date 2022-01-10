@@ -1,11 +1,11 @@
-package com.example.ftc_freight_frenzy_scorer;
+package com.phoenixro026.ftc_freight_frenzy_scorer;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.ftc_freight_frenzy_scorer.databinding.ActivityMainBinding;
+import com.phoenixro026.ftc_freight_frenzy_scorer.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
