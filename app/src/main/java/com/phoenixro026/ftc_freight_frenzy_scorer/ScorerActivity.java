@@ -492,7 +492,12 @@ public class ScorerActivity extends AppCompatActivity{
                 match.createTime = matchList.get(matchId).createTime;
                 mMatchViewModel.update(match);
             }else {
-                match.createTime = String.format(Locale.US, "%s %d %d:%d", new SimpleDateFormat("MMM", Locale.US).format(currentTime.getTime()), currentTime.get(Calendar.DAY_OF_MONTH), currentTime.get(Calendar.HOUR_OF_DAY), currentTime.get(Calendar.MINUTE));
+                String min;
+                int calMin = currentTime.get(Calendar.MINUTE);
+                if(calMin < 10)
+                    min = String.format(Locale.US, "0%d", calMin);
+                else min = String.format(Locale.US, "%d", calMin);
+                match.createTime = String.format(Locale.US, "%s %d %d:%s", new SimpleDateFormat("MMM", Locale.US).format(currentTime.getTime()), currentTime.get(Calendar.DAY_OF_MONTH), currentTime.get(Calendar.HOUR_OF_DAY), min);
                 mMatchViewModel.insert(match);
             }
             finish();
