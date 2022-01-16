@@ -42,4 +42,17 @@
     <string name="empty_not_saved">Team details are empty</string>
     <string name="team_red">Team Red</string>
     <string name="team_blue">Team Blue</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="storage">Storage</string>
+    <string name="duck_delivery_points">Duck Delivery:</string>
+    <string name="freight_in_storage_points">Freight in Storage:</string>
+    <string name="freight_in_hub_points">Freight in Hub:</string>
+    <string name="freight_bonus_points">Freight Bonus:</string>
+    <string name="team_element_used_points">Team Element Used:</string>
+    <string name="location">Location:</string>
+    <string name="parked_points">Parked:</string>
+    <string name="fully_parked_points">Fully Parked:</string>
+    <string name="warehouse">Warehouse</string>
+    <string name="edit">Edit</string>
 </resources>

@@ -85,35 +85,35 @@
                     app:layout_constraintStart_toEndOf="@+id/button_team_red"
                     app:layout_constraintTop_toBottomOf="@+id/text_team_code" />
 
-                <EditText
+                <TextView
                     android:id="@+id/text_team_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:autofillHints="team name"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
                     android:fontFamily="sans-serif-medium"
                     android:hint="@string/team_name"
-                    android:inputType="none"
-                    android:singleLine="true"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textCursorDrawable="@color/zero"
                     android:textSize="24sp"
                     android:typeface="normal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <EditText
+                <TextView
                     android:id="@+id/text_team_code"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
                     android:autofillHints="team name"
                     android:fontFamily="sans-serif-medium"
                     android:hint="@string/team_code"
                     android:inputType="none"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
                     android:singleLine="true"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textSize="24sp"
@@ -178,255 +178,255 @@
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/button_auto_hub_minus">
+                    app:layout_constraintTop_toBottomOf="@+id/auto_freight_hub_nr">
 
-                    <androidx.appcompat.widget.SwitchCompat
-                        android:id="@+id/switch_team_element_used"
-                        android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:layout_marginStart="16dp"
+                    <TextView
+                        android:id="@+id/auto_freight_bonus_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="center"
+                        android:text="@string/no"
+                        android:textAllCaps="false"
+                        android:textSize="24sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/team_element_used_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:fontFamily="sans-serif-medium"
-                        android:text="@string/team_element_used"
-                        android:textAlignment="viewStart"
+                        android:gravity="center"
+                        android:text="@string/no"
                         android:textAllCaps="false"
                         android:textSize="24sp"
                         android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/switch_freight_bonus"
+                        app:layout_constraintTop_toBottomOf="@+id/auto_freight_bonus_text"
                         tools:visibility="visible" />
 
-                    <androidx.appcompat.widget.SwitchCompat
-                        android:id="@+id/switch_freight_bonus"
-                        android:layout_width="match_parent"
-                        android:layout_height="55dp"
+                    <TextView
+                        android:id="@+id/team_element_used"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
                         android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
+                        android:layout_marginTop="8dp"
                         android:fontFamily="sans-serif-medium"
-                        android:text="@string/freight_bonus"
-                        android:textAlignment="viewStart"
+                        android:gravity="center"
+                        android:text="@string/team_element_used_points"
                         android:textAllCaps="false"
                         android:textSize="24sp"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/auto_freight_bonus"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/auto_freight_bonus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="center"
+                        android:text="@string/freight_bonus_points"
+                        android:textAllCaps="false"
+                        android:textSize="24sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button_auto_storage_plus"
-                    style="@style/text_theme"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/button_shape"
-                    android:backgroundTintMode="add"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:fontFamily="sans-serif-medium"
-                    android:hapticFeedbackEnabled="true"
-                    android:text="@string/plus"
-                    android:textSize="24sp"
-                    app:layout_constraintDimensionRatio="1:1"
-                    app:layout_constraintEnd_toEndOf="@+id/switch_duck_delivery"
-                    app:layout_constraintTop_toBottomOf="@+id/switch_duck_delivery"
-                    tools:ignore="DuplicateSpeakableTextCheck" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button_auto_hub_plus"
-                    style="@style/text_theme"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/button_shape"
-                    android:backgroundTintMode="add"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:fontFamily="sans-serif-medium"
-                    android:hapticFeedbackEnabled="true"
-                    android:text="@string/plus"
-                    android:textSize="24sp"
-                    app:layout_constraintDimensionRatio="1:1"
-                    app:layout_constraintEnd_toEndOf="@+id/switch_duck_delivery"
-                    app:layout_constraintTop_toBottomOf="@+id/button_auto_storage_plus"
-                    tools:ignore="DuplicateSpeakableTextCheck" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button_auto_storage_minus"
-                    style="@style/text_theme"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/button_shape"
-                    android:backgroundTintMode="add"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:fontFamily="sans-serif-medium"
-                    android:hapticFeedbackEnabled="true"
-                    android:text="@string/minus"
-                    android:textSize="24sp"
-                    app:layout_constraintDimensionRatio="1:1"
-                    app:layout_constraintEnd_toStartOf="@+id/button_auto_storage_plus"
-                    app:layout_constraintTop_toTopOf="@+id/button_auto_storage_plus"
-                    tools:ignore="DuplicateSpeakableTextCheck" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button_auto_hub_minus"
-                    style="@style/text_theme"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/button_shape"
-                    android:backgroundTintMode="add"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:fontFamily="sans-serif-medium"
-                    android:hapticFeedbackEnabled="true"
-                    android:text="@string/minus"
-                    android:textSize="24sp"
-                    app:layout_constraintDimensionRatio="1:1"
-                    app:layout_constraintEnd_toStartOf="@+id/button_auto_storage_plus"
-                    app:layout_constraintTop_toTopOf="@+id/button_auto_hub_plus" />
-
-                <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/switch_duck_delivery"
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
+                <TextView
+                    android:id="@+id/duck_delivery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
                     android:fontFamily="sans-serif-medium"
-                    android:text="@string/duck_delivery"
-                    android:textAlignment="viewStart"
+                    android:gravity="center"
+                    android:text="@string/duck_delivery_points"
                     android:textAllCaps="false"
                     android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/switch_auto_parked_in_storage"
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="16dp"
+                <TextView
+                    android:id="@+id/duck_delivery_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:fontFamily="sans-serif-medium"
-                    android:text="@string/parked_in_storage"
-                    android:textAlignment="viewStart"
+                    android:gravity="center"
+                    android:text="@string/no"
                     android:textAllCaps="false"
                     android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/auto_parked"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:text="@string/parked_points"
+                    android:textAllCaps="false"
+                    android:textSize="24sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/freight_bonus" />
 
-                <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/switch_auto_parked_in_warehouse"
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                <TextView
+                    android:id="@+id/auto_parked_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_marginEnd="16dp"
                     android:fontFamily="sans-serif-medium"
-                    android:text="@string/parked_in_warehouse"
-                    android:textAlignment="viewStart"
+                    android:gravity="center"
+                    android:text="@string/no"
                     android:textAllCaps="false"
                     android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/switch_auto_parked_in_storage" />
+                    app:layout_constraintTop_toTopOf="@+id/auto_parked" />
 
-                <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/switch_auto_parked_fully"
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
+                <TextView
+                    android:id="@+id/auto_fully_parked_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:text="@string/no"
+                    android:textAllCaps="false"
+                    android:textSize="24sp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/auto_fully_parked"
+                    tools:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/auto_location_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:text="@string/warehouse"
+                    android:textAllCaps="false"
+                    android:textSize="24sp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/auto_location"
+                    tools:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/auto_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="8dp"
                     android:fontFamily="sans-serif-medium"
-                    android:text="@string/fully_parked"
-                    android:textAlignment="viewStart"
+                    android:gravity="center"
+                    android:text="@string/location"
+                    android:textAllCaps="false"
+                    android:textSize="24sp"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/auto_parked"
+                    tools:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/auto_fully_parked"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:text="@string/fully_parked_points"
                     android:textAllCaps="false"
                     android:textSize="24sp"
                     android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/switch_auto_parked_in_warehouse"
+                    app:layout_constraintTop_toBottomOf="@+id/auto_location"
                     tools:visibility="visible" />
 
                 <TextView
-                    android:id="@+id/text_auto_storage"
-                    style="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/freight_in_storage"
-                    android:textAlignment="viewStart"
-                    android:textAppearance="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
-                    android:textSize="24sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/text_auto_storage_nr"
-                    app:layout_constraintEnd_toStartOf="@+id/text_auto_storage_nr"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/text_auto_storage_nr"
-                    tools:ignore="TextContrastCheck" />
-
-                <TextView
-                    android:id="@+id/text_auto_hub"
-                    style="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="24dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/freight_in_hub"
-                    android:textAlignment="viewStart"
-                    android:textAppearance="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
-                    android:textSize="24sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/text_auto_hub_nr"
-                    app:layout_constraintEnd_toStartOf="@+id/text_auto_hub_nr"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/text_auto_hub_nr"
-                    tools:ignore="TextContrastCheck" />
-
-                <TextView
-                    android:id="@+id/text_auto_storage_nr"
+                    android:id="@+id/auto_freight_storage"
                     style="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
                     android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:text="@string/freight_in_storage_points"
+                    android:textAppearance="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/auto_freight_storage_nr"
+                    tools:ignore="TextContrastCheck" />
+
+                <TextView
+                    android:id="@+id/auto_freight_hub"
+                    style="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:text="@string/freight_in_hub_points"
+                    android:textAppearance="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/auto_freight_hub_nr"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/auto_freight_hub_nr"
+                    tools:ignore="TextContrastCheck" />
+
+                <TextView
+                    android:id="@+id/auto_freight_storage_nr"
+                    style="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
                     android:text="@string/zero"
                     android:textAlignment="center"
                     android:textAppearance="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
                     android:textSize="24sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/button_auto_storage_minus"
-                    app:layout_constraintEnd_toStartOf="@+id/button_auto_storage_minus"
-                    app:layout_constraintStart_toEndOf="@+id/text_auto_storage"
-                    app:layout_constraintTop_toTopOf="@+id/button_auto_storage_minus"
+                    app:layout_constraintEnd_toEndOf="@+id/duck_delivery_text"
+                    app:layout_constraintStart_toStartOf="@+id/duck_delivery_text"
+                    app:layout_constraintTop_toBottomOf="@+id/duck_delivery_text"
                     tools:ignore="TextContrastCheck" />
 
                 <TextView
-                    android:id="@+id/text_auto_hub_nr"
+                    android:id="@+id/auto_freight_hub_nr"
                     style="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
                     android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
                     android:text="@string/zero"
                     android:textAlignment="center"
                     android:textAppearance="@style/Theme.FTC_FREIGHTFRENZY_Scorer"
                     android:textSize="24sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/button_auto_hub_minus"
-                    app:layout_constraintEnd_toEndOf="@+id/text_auto_storage_nr"
-                    app:layout_constraintStart_toStartOf="@+id/text_auto_storage_nr"
-                    app:layout_constraintTop_toTopOf="@+id/button_auto_hub_minus"
+                    app:layout_constraintEnd_toEndOf="@+id/auto_freight_storage_nr"
+                    app:layout_constraintStart_toStartOf="@+id/auto_freight_storage_nr"
+                    app:layout_constraintTop_toBottomOf="@+id/auto_freight_storage_nr"
                     tools:ignore="TextContrastCheck" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -1237,7 +1237,7 @@
                     app:layout_constraintEnd_toStartOf="@id/text_penalties_minor_nr"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/text_penalties_minor_nr"
-                    tools:ignore="TextContrastCheck" />
+                    tools:ignore="TextContrastCheck,TooManyViews" />
 
                 <TextView
                     android:id="@+id/text_penalties_minor_nr"
@@ -1362,7 +1362,7 @@
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button_save"
+                android:id="@+id/button_edit"
                 style="@style/text_theme"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -1376,7 +1376,7 @@
                 android:focusable="true"
                 android:fontFamily="sans-serif-medium"
                 android:hapticFeedbackEnabled="true"
-                android:text="@string/save"
+                android:text="@string/edit"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="1:1"

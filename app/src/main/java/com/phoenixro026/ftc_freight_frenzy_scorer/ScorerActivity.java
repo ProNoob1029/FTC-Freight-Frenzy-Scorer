@@ -564,6 +564,7 @@ public class ScorerActivity extends AppCompatActivity{
         binding.textAutoStorageNr.setText(String.format(Locale.US,"%d", autoStorage));
         binding.textAutoHubNr.setText(String.format(Locale.US,"%d", autoHub));
         binding.switchFreightBonus.setChecked(freightBonus);
+        binding.switchTeamElementUsed.setChecked(teamElementUsed);
         binding.switchAutoParkedInStorage.setChecked(autoParkedInStorage);
         binding.switchAutoParkedInWarehouse.setChecked(autoParkedInWarehouse);
         binding.switchAutoParkedFully.setChecked(autoParkedFully);
@@ -592,8 +593,11 @@ public class ScorerActivity extends AppCompatActivity{
         binding.textPenaltiesMajorNr.setText(String.format(Locale.US,"%d", penaltiesMajor));
         binding.textTotalNr.setText(String.format(Locale.US, "%d", totalPoints));
 
+        if(freightBonus)
+            binding.switchTeamElementUsed.setVisibility(View.VISIBLE);
+
         if(autoParkedInStorage || autoParkedInWarehouse)
-            binding.switchAutoParkedFully.setVisibility((View.VISIBLE));
+            binding.switchAutoParkedFully.setVisibility(View.VISIBLE);
 
         if(endgameParked)
             binding.switchEndgameParkedFully.setVisibility(View.VISIBLE);

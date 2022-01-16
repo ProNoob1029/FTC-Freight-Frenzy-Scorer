@@ -24,6 +24,7 @@
             android:configChanges="orientation|screenSize">
         </activity>
         <activity android:name="com.phoenixro026.ftc_freight_frenzy_scorer.ListActivity" />
+        <activity android:name="com.phoenixro026.ftc_freight_frenzy_scorer.ScorerActivityView" />
     </application>
 
 </manifest>

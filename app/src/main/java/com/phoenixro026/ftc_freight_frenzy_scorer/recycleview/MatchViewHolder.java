@@ -26,7 +26,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.phoenixro026.ftc_freight_frenzy_scorer.R;
-import com.phoenixro026.ftc_freight_frenzy_scorer.ScorerActivity;
+import com.phoenixro026.ftc_freight_frenzy_scorer.ScorerActivityView;
 
 class MatchViewHolder extends RecyclerView.ViewHolder {
     private final TextView matchItemView;
@@ -40,7 +40,7 @@ class MatchViewHolder extends RecyclerView.ViewHolder {
         Context context = itemView.getContext();
         itemView.setOnClickListener(view -> {
             String value="edit";
-            context.startActivity(new Intent(context, ScorerActivity.class).putExtra("key", value).putExtra("id", mMatch));
+            context.startActivity(new Intent(context, ScorerActivityView.class).putExtra("key", value).putExtra("id", mMatch));
         });
     }
 
