@@ -100,10 +100,14 @@ public class ScorerActivityView extends AppCompatActivity{
         if(matchList.get(matchId).teamColor.contentEquals("red")) {
             binding.buttonTeamRed.setTextAppearance(view.getContext(), R.style.button_theme);
             binding.buttonTeamRed.setBackground(ContextCompat.getDrawable(view.getContext(), R.drawable.button_shape_red));
+            binding.buttonTeamBlue.setTextAppearance(view.getContext(), R.style.Theme_FTC_FREIGHTFRENZY_Scorer);
+            binding.buttonTeamBlue.setBackgroundColor(getResources().getColor(R.color.zero));
             teamColor = "red";
         }else {
             binding.buttonTeamBlue.setTextAppearance(view.getContext(), R.style.button_theme);
             binding.buttonTeamBlue.setBackground(ContextCompat.getDrawable(view.getContext(), R.drawable.button_shape_blue));
+            binding.buttonTeamRed.setTextAppearance(view.getContext(), R.style.Theme_FTC_FREIGHTFRENZY_Scorer);
+            binding.buttonTeamRed.setBackgroundColor(getResources().getColor(R.color.zero));
             teamColor = "blue";
         }
 
