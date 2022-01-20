@@ -13,9 +13,9 @@
     <string name="alliance_team_code">Alliance Team Code</string>
     <string name="autonomous_points">Autonomous Points:</string>
     <string name="freight_in_storage">Freight in Storage</string>
-    <string name="plus">+</string>
-    <string name="minus">-</string>
-    <string name="zero">0</string>
+    <string name="plus" translatable="false">+</string>
+    <string name="minus" translatable="false">-</string>
+    <string name="zero" translatable="false">0</string>
     <string name="freight_in_hub">Freight in Hub</string>
     <string name="parked_in_storage">Parked in Storage</string>
     <string name="fully_parked">Fully Parked</string>
@@ -44,7 +44,7 @@
     <string name="team_blue">Team Blue</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="storage">Storage</string>
+    <string name="storage">in Storage</string>
     <string name="duck_delivery_points">Duck Delivery:</string>
     <string name="freight_in_storage_points">Freight in Storage:</string>
     <string name="freight_in_hub_points">Freight in Hub:</string>
@@ -53,6 +53,18 @@
     <string name="location">Location:</string>
     <string name="parked_points">Parked:</string>
     <string name="fully_parked_points">Fully Parked:</string>
-    <string name="warehouse">Warehouse</string>
+    <string name="warehouse">in Warehouse</string>
     <string name="edit">Edit</string>
+    <string name="freight_in_hub_l1_pts">Freight in Hub L1:</string>
+    <string name="freight_in_hub_l2_pts">Freight in Hub L2:</string>
+    <string name="freight_in_hub_l3_pts">Freight in Hub L3:</string>
+    <string name="freight_in_shared_pts">Freight in Shared:</string>
+    <string name="carousel_ducks_pts">Carousel Ducks:</string>
+    <string name="balanced_shipping_hub_pts">Balanced Shipping Hub:</string>
+    <string name="leaning_shared_hub_pts">Leaning Shared Hub:</string>
+    <string name="capping_pts">Capping:</string>
+    <string name="minor_pts">Minor:</string>
+    <string name="major_pts">Major:</string>
+    <string name="fully">Fully</string>
+    <string name="partly">Partly</string>
 </resources>

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -14,8 +13,6 @@ import com.phoenixro026.ftc_freight_frenzy_scorer.database.Match;
 import com.phoenixro026.ftc_freight_frenzy_scorer.databinding.ActivityScorerViewBinding;
 import com.phoenixro026.ftc_freight_frenzy_scorer.recycleview.MatchViewModel;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -23,8 +20,6 @@ public class ScorerActivityView extends AppCompatActivity{
 
     protected ActivityScorerViewBinding binding;
 
-    public String teamName;
-    public String teamCode;
     public String teamColor;
 
     ///Autonomous
@@ -63,8 +58,6 @@ public class ScorerActivityView extends AppCompatActivity{
     //Total
     public int totalPoints = 0;
 
-    private MatchViewModel mMatchViewModel;
-
     String key;
     int matchId;
     List<Match> matchList;
@@ -78,7 +71,7 @@ public class ScorerActivityView extends AppCompatActivity{
 
         Vibrator myVib = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
 
-        mMatchViewModel = new ViewModelProvider(this).get(MatchViewModel.class);
+        MatchViewModel mMatchViewModel = new ViewModelProvider(this).get(MatchViewModel.class);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -100,126 +93,6 @@ public class ScorerActivityView extends AppCompatActivity{
             startActivity(new Intent(ScorerActivityView.this, ScorerActivity.class).putExtra("key", value).putExtra("id", matchId + 1));
         });
     }
-
-    public void CalculateAutoPoints() {
-        autoTotalPoints = autoStorage * 2 + autoHub * 6;
-        if(duckDelivery)
-            autoTotalPoints += 10;
-        if(freightBonus) {
-            if(teamElementUsed)
-                autoTotalPoints += 20;
-            else autoTotalPoints += 10;
-        }
-        if(autoParkedInStorage) {
-            if(autoParkedFully)
-                autoTotalPoints += 6;
-            else autoTotalPoints += 3;
-        }else if(autoParkedInWarehouse) {
-            if(autoParkedFully)
-                autoTotalPoints += 10;
-            else autoTotalPoints += 5;
-        }
-        binding.textAutoTotalPointsNr.setText(String.format(Locale.US,"%d", autoTotalPoints));
-        CalculateTotalPoints();
-    }
-
-    public void CalculateDriverPoints() {
-        driverTotalPoints = driverStorage + 2 * driverHubL1 + 4 * driverHubL2 + 6 * driverHubL3 + 4 * driverShared;
-        binding.textDriverTotalPointsNr.setText(String.format(Locale.US, "%d", driverTotalPoints));
-        CalculateTotalPoints();
-    }
-
-    public void CalculateEndgamePoints() {
-        endgameTotalPoints = 6 * carouselDucks + 15 * capping;
-        if(balancedShipping)
-            endgameTotalPoints += 10;
-        if(leaningShared)
-            endgameTotalPoints += 20;
-        if(endgameParked){
-            if(endgameFullyParked)
-                endgameTotalPoints += 6;
-            else endgameTotalPoints += 3;
-        }
-        binding.textEndgameTotalPointsNr.setText(String.format(Locale.US, "%d", endgameTotalPoints));
-        CalculateTotalPoints();
-    }
-
-    public void CalculatePenalties() {
-        penaltiesTotal = -10 * penaltiesMinor + -30 * penaltiesMajor;
-        binding.textPenaltiesNr.setText(String.format(Locale.US, "%d", penaltiesTotal));
-        CalculateTotalPoints();
-    }
-
-    public void CalculateTotalPoints() {
-        totalPoints = autoTotalPoints + driverTotalPoints + endgameTotalPoints + penaltiesTotal;
-        binding.textTotalNr.setText(String.format(Locale.US, "%d", totalPoints));
-    }
-
-    /*public void Save() {
-        teamName = binding.textTeamName.getText().toString();
-        teamCode = binding.textTeamCode.getText().toString();
-        if(!teamName.contentEquals("") && !teamCode.contentEquals("") && !teamColor.contentEquals("")){
-            Match match = new Match();
-            Calendar currentTime = Calendar.getInstance();
-            match.teamName = teamName;
-            match.teamCode = teamCode;
-            match.teamColor = teamColor;
-
-            ///Autonomous
-            match.autoTotalPoints = autoTotalPoints;
-            match.duckDelivery = duckDelivery;
-            match.autoStorage = autoStorage;
-            match.autoHub = autoHub;
-            match.freightBonus = freightBonus;
-            match.teamElementUsed = teamElementUsed;
-            match.autoParkedInStorage = autoParkedInStorage;
-            match.autoParkedInWarehouse = autoParkedInWarehouse;
-            match.autoParkedFully = autoParkedFully;
-
-            ///Driver
-            match.driverTotalPoints = driverTotalPoints;
-            match.driverStorage = driverStorage;
-            match.driverHubL1 = driverHubL1;
-            match.driverHubL2 = driverHubL2;
-            match.driverHubL3 = driverHubL3;
-            match.driverShared = driverShared;
-
-            ///Endgame
-            match.endgameTotalPoints = endgameTotalPoints;
-            match.carouselDucks = carouselDucks;
-            match.balancedShipping = balancedShipping;
-            match.leaningShared = leaningShared;
-            match.endgameParked = endgameParked;
-            match.endgameFullyParked = endgameFullyParked;
-            match.capping = capping;
-
-            //Penalties
-            match.penaltiesTotal = penaltiesTotal;
-            match.penaltiesMinor = penaltiesMinor;
-            match.penaltiesMajor = penaltiesMajor;
-
-            //Total
-            match.totalPoints = totalPoints;
-
-            if(key.contentEquals("edit")){
-                match.id = matchList.get(matchId).id;
-                match.createTime = matchList.get(matchId).createTime;
-                mMatchViewModel.update(match);
-            }else {
-                String min;
-                int calMin = currentTime.get(Calendar.MINUTE);
-                if(calMin < 10)
-                    min = String.format(Locale.US, "0%d", calMin);
-                else min = String.format(Locale.US, "%d", calMin);
-                match.createTime = String.format(Locale.US, "%s %d %d:%s", new SimpleDateFormat("MMM", Locale.US).format(currentTime.getTime()), currentTime.get(Calendar.DAY_OF_MONTH), currentTime.get(Calendar.HOUR_OF_DAY), min);
-                mMatchViewModel.insert(match);
-            }
-            finish();
-        }else Toast.makeText(
-                getApplicationContext(),
-                R.string.empty_not_saved,
-                Toast.LENGTH_SHORT).show();
-    }*/
 
     public void InsertValues(View view) {
         binding.textTeamName.setText(matchList.get(matchId).teamName);
@@ -290,12 +163,9 @@ public class ScorerActivityView extends AppCompatActivity{
             binding.teamElementUsedText.setVisibility(View.GONE);
         }
         if(autoParkedInStorage || autoParkedInWarehouse){
-            binding.autoParkedText.setText(R.string.yes);
-            binding.autoLocation.setVisibility(View.VISIBLE);
-            binding.autoLocationText.setVisibility(View.VISIBLE);
             if(autoParkedInStorage)
-                binding.autoLocationText.setText(R.string.storage);
-            else binding.autoLocationText.setText(R.string.warehouse);
+                binding.autoParkedText.setText(R.string.storage);
+            else binding.autoParkedText.setText(R.string.warehouse);
             binding.autoFullyParked.setVisibility(View.VISIBLE);
             binding.autoFullyParkedText.setVisibility(View.VISIBLE);
             if(autoParkedFully)
@@ -303,8 +173,6 @@ public class ScorerActivityView extends AppCompatActivity{
             else binding.autoFullyParkedText.setText(R.string.no);
         } else {
             binding.autoParkedText.setText(R.string.no);
-            binding.autoLocation.setVisibility(View.GONE);
-            binding.autoLocationText.setVisibility(View.GONE);
             binding.autoFullyParked.setVisibility(View.GONE);
             binding.autoFullyParkedText.setVisibility(View.GONE);
         }
@@ -321,10 +189,17 @@ public class ScorerActivityView extends AppCompatActivity{
         //Endgame
         binding.textEndgameTotalPointsNr.setText(String.format(Locale.US, "%d", endgameTotalPoints));
         binding.textEndgameCarouselNr.setText(String.format(Locale.US,"%d", carouselDucks));
-        binding.switchEndgameBalancedShipping.setChecked(balancedShipping);
-        binding.switchEndgameLeaningShared.setChecked(leaningShared);
-        binding.switchEndgameParked.setChecked(endgameParked);
-        binding.switchEndgameParkedFully.setChecked(endgameFullyParked);
+        if(balancedShipping)
+            binding.switchEndgameBalancedShippingText.setText(R.string.yes);
+        else binding.switchEndgameBalancedShippingText.setText(R.string.no);
+        if(leaningShared)
+            binding.switchEndgameLeaningSharedText.setText(R.string.yes);
+        else binding.switchEndgameLeaningSharedText.setText(R.string.no);
+        if(endgameParked){
+            if(endgameFullyParked)
+                binding.switchEndgameParkedText.setText(R.string.fully);
+            else binding.switchEndgameParkedText.setText(R.string.partly);
+        } else binding.switchEndgameParkedText.setText(R.string.no);
         binding.textEndgameCappingNr.setText(String.format(Locale.US,"%d", capping));
 
         //Penalties
@@ -332,9 +207,6 @@ public class ScorerActivityView extends AppCompatActivity{
         binding.textPenaltiesMinorNr.setText(String.format(Locale.US,"%d", penaltiesMinor));
         binding.textPenaltiesMajorNr.setText(String.format(Locale.US,"%d", penaltiesMajor));
         binding.textTotalNr.setText(String.format(Locale.US, "%d", totalPoints));
-
-        if(endgameParked)
-            binding.switchEndgameParkedFully.setVisibility(View.VISIBLE);
 
     }
 }
