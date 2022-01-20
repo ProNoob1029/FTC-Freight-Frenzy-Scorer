@@ -35,6 +35,10 @@ public class MatchViewModel extends AndroidViewModel {
         return mAllMatches;
     }
 
+    public void deleteByUserId(int userId){
+        mRepository.deleteByUserId(userId);
+    }
+
     public LiveData<List<Match>> getAllMatchesDesc() {
         return mAllMatchesDesc;
     }

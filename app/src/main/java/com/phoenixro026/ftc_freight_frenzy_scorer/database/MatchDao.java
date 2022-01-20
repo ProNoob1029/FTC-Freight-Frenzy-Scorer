@@ -2,6 +2,7 @@ package com.phoenixro026.ftc_freight_frenzy_scorer.database;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.DeleteTable;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -39,4 +40,7 @@ public interface MatchDao {
 
     @Update
     void update(Match match);
+
+    @Query("DELETE FROM `match` WHERE id = :userId")
+    void deleteByUserId(int userId);
 }

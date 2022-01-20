@@ -67,4 +67,5 @@
     <string name="major_pts">Major:</string>
     <string name="fully">Fully</string>
     <string name="partly">Partly</string>
+    <string name="delete">Delete</string>
 </resources>
