@@ -42,7 +42,7 @@ class MatchRepository {
     }
 
     void deleteByUserId(int userId) {
-        mMatchDao.deleteByUserId(userId);
+        AppDatabase.databaseWriteExecutor.execute(() -> mMatchDao.deleteByUserId(userId));
     }
 
     // You must call this on a non-UI thread or your app will throw an exception. Room ensures

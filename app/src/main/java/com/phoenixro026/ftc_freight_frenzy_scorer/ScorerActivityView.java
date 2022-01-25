@@ -95,8 +95,10 @@ public class ScorerActivityView extends AppCompatActivity{
 
         binding.buttonDelete.setOnClickListener(v -> {
             myVib.vibrate(20);
-            String value="edit";
-            startActivity(new Intent(ScorerActivityView.this, ScorerActivity.class).putExtra("key", value).putExtra("id", matchId + 1));
+            if(mMatchViewModel.getAllMatches().hasObservers())
+                mMatchViewModel.getAllMatches().removeObserver(this@Acti);
+            mMatchViewModel.deleteByUserId(matchId);
+            finish();
         });
     }
 
