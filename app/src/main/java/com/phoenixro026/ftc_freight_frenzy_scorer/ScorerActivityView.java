@@ -61,6 +61,9 @@ public class ScorerActivityView extends AppCompatActivity{
     String key;
     int matchId;
     List<Match> matchList;
+    MatchViewModel mMatchViewModel;
+
+    Match currentMatch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,18 +74,19 @@ public class ScorerActivityView extends AppCompatActivity{
 
         Vibrator myVib = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
 
-        MatchViewModel mMatchViewModel = new ViewModelProvider(this).get(MatchViewModel.class);
+        mMatchViewModel = new ViewModelProvider(this).get(MatchViewModel.class);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             key = extras.getString("key");
-            matchId = extras.getInt("id") - 1;
+            matchId = extras.getInt("id");
             //The key argument here must match that used in the other activity
         }
 
         mMatchViewModel.getAllMatches().observe(this, newMatchList -> {
             // Update the cached copy of the words in the adapter.
             matchList = newMatchList;
+            convertToMatch();
             if(key.contentEquals("edit"))
                 InsertValues(view);
         });
@@ -95,17 +99,29 @@ public class ScorerActivityView extends AppCompatActivity{
 
         binding.buttonDelete.setOnClickListener(v -> {
             myVib.vibrate(20);
-            if(mMatchViewModel.getAllMatches().hasObservers())
-                mMatchViewModel.getAllMatches().removeObserver(this@Acti);
-            mMatchViewModel.deleteByUserId(matchId);
-            finish();
+            Delete();
         });
     }
 
+    void convertToMatch(){
+        int matchSize = matchList.size();
+        for(int i = 0; i < matchSize; i++){
+            if(matchList.get(i).id == matchId){
+                currentMatch = matchList.get(i);
+                break;
+            }
+        }
+    }
+
+    void Delete(){
+        mMatchViewModel.deleteByUserId(matchId);
+        finish();
+    }
+
     public void InsertValues(View view) {
-        binding.textTeamName.setText(matchList.get(matchId).teamName);
-        binding.textTeamCode.setText(matchList.get(matchId).teamCode);
-        if(matchList.get(matchId).teamColor.contentEquals("red")) {
+        binding.textTeamName.setText(currentMatch.teamName);
+        binding.textTeamCode.setText(currentMatch.teamCode);
+        if(currentMatch.teamColor.contentEquals("red")) {
             binding.buttonTeamRed.setTextAppearance(view.getContext(), R.style.button_theme);
             binding.buttonTeamRed.setBackground(ContextCompat.getDrawable(view.getContext(), R.drawable.button_shape_red));
             binding.buttonTeamBlue.setTextAppearance(view.getContext(), R.style.Theme_FTC_FREIGHTFRENZY_Scorer);
@@ -120,40 +136,40 @@ public class ScorerActivityView extends AppCompatActivity{
         }
 
         ///Autonomous
-        autoTotalPoints = matchList.get(matchId).autoTotalPoints;
-        duckDelivery = matchList.get(matchId).duckDelivery;
-        autoStorage = matchList.get(matchId).autoStorage;
-        autoHub = matchList.get(matchId).autoHub;
-        freightBonus = matchList.get(matchId).freightBonus;
-        teamElementUsed = matchList.get(matchId).teamElementUsed;
-        autoParkedInStorage = matchList.get(matchId).autoParkedInStorage;
-        autoParkedInWarehouse = matchList.get(matchId).autoParkedInWarehouse;
-        autoParkedFully = matchList.get(matchId).autoParkedFully;
+        autoTotalPoints = currentMatch.autoTotalPoints;
+        duckDelivery = currentMatch.duckDelivery;
+        autoStorage = currentMatch.autoStorage;
+        autoHub = currentMatch.autoHub;
+        freightBonus = currentMatch.freightBonus;
+        teamElementUsed = currentMatch.teamElementUsed;
+        autoParkedInStorage = currentMatch.autoParkedInStorage;
+        autoParkedInWarehouse = currentMatch.autoParkedInWarehouse;
+        autoParkedFully = currentMatch.autoParkedFully;
 
         ///Driver
-        driverTotalPoints = matchList.get(matchId).driverTotalPoints;
-        driverStorage = matchList.get(matchId).driverStorage;
-        driverHubL1 = matchList.get(matchId).driverHubL1;
-        driverHubL2 = matchList.get(matchId).driverHubL2;
-        driverHubL3 = matchList.get(matchId).driverHubL3;
-        driverShared = matchList.get(matchId).driverShared;
+        driverTotalPoints = currentMatch.driverTotalPoints;
+        driverStorage = currentMatch.driverStorage;
+        driverHubL1 = currentMatch.driverHubL1;
+        driverHubL2 = currentMatch.driverHubL2;
+        driverHubL3 = currentMatch.driverHubL3;
+        driverShared = currentMatch.driverShared;
 
         ///Endgame
-        endgameTotalPoints = matchList.get(matchId).endgameTotalPoints;
-        carouselDucks = matchList.get(matchId).carouselDucks;
-        balancedShipping = matchList.get(matchId).balancedShipping;
-        leaningShared = matchList.get(matchId).leaningShared;
-        endgameParked = matchList.get(matchId).endgameParked;
-        endgameFullyParked = matchList.get(matchId).endgameFullyParked;
-        capping = matchList.get(matchId).capping;
+        endgameTotalPoints = currentMatch.endgameTotalPoints;
+        carouselDucks = currentMatch.carouselDucks;
+        balancedShipping = currentMatch.balancedShipping;
+        leaningShared = currentMatch.leaningShared;
+        endgameParked = currentMatch.endgameParked;
+        endgameFullyParked = currentMatch.endgameFullyParked;
+        capping = currentMatch.capping;
 
         //Penalties
-        penaltiesTotal = matchList.get(matchId).penaltiesTotal;
-        penaltiesMinor = matchList.get(matchId).penaltiesMinor;
-        penaltiesMajor = matchList.get(matchId).penaltiesMajor;
+        penaltiesTotal = currentMatch.penaltiesTotal;
+        penaltiesMinor = currentMatch.penaltiesMinor;
+        penaltiesMajor = currentMatch.penaltiesMajor;
 
         //Total
-        totalPoints = matchList.get(matchId).totalPoints;
+        totalPoints = currentMatch.totalPoints;
 
         //Autonomous
         binding.textAutoTotalPointsNr.setText(String.format(Locale.US,"%d", autoTotalPoints));
