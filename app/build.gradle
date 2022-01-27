@@ -13,8 +13,8 @@ android {
         applicationId "com.phoenixro026.ftc_freight_frenzy_scorer"
         minSdk 21
         targetSdk 30
-        versionCode 6
-        versionName "2.2"
+        versionCode 7
+        versionName "2.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
