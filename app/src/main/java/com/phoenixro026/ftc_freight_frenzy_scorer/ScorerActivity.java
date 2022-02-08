@@ -24,7 +24,7 @@ public class ScorerActivity extends AppCompatActivity{
 
     public String teamName;
     public String teamCode;
-    public String teamColor;
+    public String teamColor = "";
 
     ///Autonomous
     public int autoTotalPoints = 0;
